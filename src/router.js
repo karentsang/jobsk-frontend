@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import list from './List/List.vue'
-
+import post from './Post/Post.vue'
 
 
 
@@ -17,6 +17,11 @@ const router =  new Router({
       path: '/list',
       name: 'list',
       component: list
+    },
+    {
+      path: '/post',
+      name: 'post',
+      component: post
     }
   ]
 })

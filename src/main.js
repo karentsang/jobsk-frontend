@@ -7,6 +7,7 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 import BootstrapVue from 'bootstrap-vue'
 import Vuesax from 'vuesax'
 import 'vuesax/dist/vuesax.css' 
+import 'material-icons/iconfont/material-icons.css';
 
 
 
