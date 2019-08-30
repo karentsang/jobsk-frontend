@@ -3,8 +3,6 @@ import Router from 'vue-router'
 import list from './List/List.vue'
 import post from './Post/Post.vue'
 import homepage from './Homepage/Homepage.vue'
-import header from './components/header.vue'
-import footer from './components/footer.vue'
 
 
 import MyCalendar from './Profile/components/MyCalendar.vue'
