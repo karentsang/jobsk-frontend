@@ -8,16 +8,21 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "axios": "^0.19.0",
     "bootstrap": "^3.4.1",
+    "bootstrap-vue": "^2.0.0-rc.28",
     "core-js": "^2.6.5",
+    "element-ui": "^2.12.0",
     "material-design-icons": "^3.0.1",
     "material-icons": "^0.3.1",
     "v-md-date-range-picker": "^2.6.0",
     "vue": "^2.6.10",
+    "vue-axios": "^2.1.4",
     "vue-confirmation-button": "^1.0.1",
     "vue-ctk-date-time-picker": "^2.1.1",
     "vue-router": "^3.1.2",
     "vue-star-rating": "^1.6.1",
+    "vue2-google-maps": "^0.10.7",
     "vuesax": "^3.9.0"
   },
   "devDependencies": {
