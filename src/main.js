@@ -10,6 +10,9 @@ import 'vuesax/dist/vuesax.css'
 import 'material-icons/iconfont/material-icons.css';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import StarRating from 'vue-star-rating';
+import VueCtkDateTimePicker from 'vue-ctk-date-time-picker';
+import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css';
 
 
 
@@ -24,6 +27,10 @@ Vue.use(VueGoogleMaps, {
 Vue.use(BootstrapVue)
 Vue.use(Vuesax);
 Vue.use(ElementUI)
+Vue.component('VueCtkDateTimePicker', VueCtkDateTimePicker);
+Vue.component('star-rating', StarRating);
+
+
 
 
 Vue.config.productionTip = false
