@@ -1,5 +1,6 @@
 <template>
   <div>
+    <jobskheader/>
 
     <div class="slogan" style="width:100%; height: 200px; background-color:#FAFAFA; font-size: 24px; text-align: center; padding: 51px;">
         Find your local service, earn extra money with your experties, in JOBSK
@@ -21,17 +22,23 @@
 
 
     <h3 style="width:90%; margin:auto; margin-bottom: 10px; text-align: center;">Be part of JOBSK community</h3>
+
+    <jobskfooter/>
   </div>
 </template>
 
 <script>
 import slide from '@/Homepage/components/slide.vue'
+import jobskheader from '@/components/header.vue'
+import jobskfooter from '@/components/footer.vue'
 
 
 export default {
   name: 'Homepage',
   components:{
       slide,
+      jobskheader,
+      jobskfooter,
   }
 }
 </script>
