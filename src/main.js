@@ -8,6 +8,8 @@ import BootstrapVue from 'bootstrap-vue'
 import Vuesax from 'vuesax'
 import 'vuesax/dist/vuesax.css' 
 import 'material-icons/iconfont/material-icons.css';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 
 
 
@@ -21,6 +23,7 @@ Vue.use(VueGoogleMaps, {
 })
 Vue.use(BootstrapVue)
 Vue.use(Vuesax);
+Vue.use(ElementUI)
 
 
 Vue.config.productionTip = false

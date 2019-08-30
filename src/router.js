@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import list from './List/List.vue'
 import post from './Post/Post.vue'
+import homepage from './Homepage/Homepage.vue'
 
 
 
@@ -22,6 +23,11 @@ const router =  new Router({
       path: '/post',
       name: 'post',
       component: post
+    },
+    {
+      path: '/homepage',
+      name: 'homepage',
+      component: homepage
     }
   ]
 })
