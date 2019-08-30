@@ -9,7 +9,7 @@
                 <div class="header-sidebar" slot="header">
                     <vs-avatar style="margin-left: 10px"  size="70px" :src="profileimg"/>
 
-                    <h4 style="margin-left: 20px">
+                    <h4>
                     {{name}}
                     </h4>
 
