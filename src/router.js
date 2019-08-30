@@ -41,26 +41,19 @@ const router =  new Router({
       path: '/footer',
       name: 'footer',
       component: footer
+    },
+    {
+      path: '/profile/mycalendar',
+      name: 'mycalendar',
+      component: MyCalendar,
+    },
+    {
+      path: '/confirmation/pending',
+      name: 'pending',
+      component: pending,
     }
   ]
 })
 export default router;
-
-export default new Router({
-    mode: 'history',
-    base: process.env.BASE_URL,
-    routes: [
-      {
-        path: '/profile/mycalendar',
-        name: 'mycalendar',
-        component: MyCalendar,
-      },
-      {
-        path: '/confirmation/pending',
-        name: 'pending',
-        component: pending,
-      }
-    ]
-  })
 
 //   export default Router;
