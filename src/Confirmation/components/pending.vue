@@ -48,7 +48,8 @@
       <div slot="footer">
         <vs-row vs-justify="flex-end">
         <div class="center">
-        <vs-button @click="openLoading" type="filled" color="primary">{{status}}</vs-button>
+          {{status}}
+        <vs-button @click="openLoading" type="filled" color="primary"><router-link to="/profile/mypost">Check your post</router-link></vs-button>
     </div>
         
         </vs-row>

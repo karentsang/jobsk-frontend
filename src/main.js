@@ -24,7 +24,7 @@ Vue.use(VueGoogleMaps, {
   },
   installComponents: true
 })
-Vue.use(BootstrapVue)
+// Vue.use(BootstrapVue)
 Vue.use(Vuesax);
 Vue.use(ElementUI)
 Vue.component('VueCtkDateTimePicker', VueCtkDateTimePicker);

@@ -13,8 +13,8 @@
     </vs-card>
 
     <div class="centerx">
-        <vs-button @click="openAlert1('Note')" color="#07689F" :type="offerServiceSelected1" style="width: 100%; height:60px; margin-bottom: 15px;">Look for service</vs-button>
-        <vs-button @click="openAlert2('Note')" color="#ff7e67" :type="offerServiceSelected2" style="width: 100%; height:60px; margin-bottom: 15px;">Offer a service</vs-button>        
+        <vs-button @click="openAlert1('Note')" color="#07689F" :type="offerServiceSelected1" style="width: 100%; height:60px; margin-bottom: 15px; justify-content: center;">Look for service</vs-button>
+        <vs-button @click="openAlert2('Note')" color="#ff7e67" :type="offerServiceSelected2" style="width: 100%; height:60px; margin-bottom: 15px; justify-content: center;">Offer a service</vs-button>        
     </div>
 
     <div class="selection">

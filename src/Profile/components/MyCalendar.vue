@@ -19,7 +19,7 @@
          <div slot="footer">
        
   
-        <vs-button @click="successAlert" type="filled" color="primary">Confirm</vs-button>
+        <vs-button @click="successAlert" type="filled" color="primary"><router-link to="/confirmation/pending">Confirm</router-link></vs-button>
 
         
        
@@ -35,14 +35,18 @@
 export default {
     
 
-    
+    methods: {
+      successAlert() {
+
+      }
+    },
     name: 'mycalendar',
     component: {    },
     data() {
         return {
             timeSelectForm: true,
             dateSelectForm: false,
-            time:new Date(),    
+            time: '',    
             name:"Suang"
         }
     }

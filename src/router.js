@@ -3,9 +3,11 @@ import Router from 'vue-router'
 import list from './List/List.vue'
 import post from './Post/Post.vue'
 import homepage from './Homepage/Homepage.vue'
+import login from './Account/Login.vue'
+import signup from './Account/SignUp.vue'
+import mypost from './Profile/components/MyPost.vue'
 
-
-import MyCalendar from './Profile/components/MyCalendar.vue'
+import mycalendar from './Profile/components/MyCalendar.vue'
 import pending from './Confirmation/components/pending.vue'
 
 
@@ -15,6 +17,21 @@ const router =  new Router({
   mode: 'history',
   base: process.env.BASE_URL,
   routes: [
+    {
+      path: '/',
+      name: 'homepage',
+      component: homepage
+    },
+    {
+      path: '/account/login',
+      name: 'login',
+      component: login
+    },
+    {
+      path: '/account/login/signup',
+      name: 'signup',
+      component: signup
+    },
     {
       path: '/list',
       name: 'list',
@@ -26,19 +43,19 @@ const router =  new Router({
       component: post
     },
     {
-      path: '/homepage',
-      name: 'homepage',
-      component: homepage
-    },
-    {
       path: '/profile/mycalendar',
       name: 'mycalendar',
-      component: MyCalendar,
+      component: mycalendar,
     },
     {
       path: '/confirmation/pending',
       name: 'pending',
       component: pending,
+    },
+    {
+      path: '/profile/mypost',
+      name: 'mypost',
+      component: mypost,
     }
   ]
 })

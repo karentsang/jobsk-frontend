@@ -2,6 +2,7 @@
   <div>
     <jobfilter/>
     <googlemap/>
+    <h3><router-link to="/profile/mycalendar">book now</router-link></h3>
   </div>
 </template>
 
