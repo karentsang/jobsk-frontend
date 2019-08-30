@@ -33,16 +33,6 @@ const router =  new Router({
       component: homepage
     },
     {
-      path: '/header',
-      name: 'header',
-      component: header
-    },
-    {
-      path: '/footer',
-      name: 'footer',
-      component: footer
-    },
-    {
       path: '/profile/mycalendar',
       name: 'mycalendar',
       component: MyCalendar,
