@@ -13,8 +13,8 @@
     </vs-card>
 
     <div class="centerx">
-        <vs-button @click="openAlert1('Note')" color="#07689F" type="border" style="width: 100%; height:60px; margin-bottom: 15px;">Look for service</vs-button>
-        <vs-button @click="openAlert2('Note')" color="#ff7e67" type="border" style="width: 100%; height:60px; margin-bottom: 15px;">Offer a service</vs-button>        
+        <vs-button @click="openAlert1('Note')" color="#07689F" :type="offerServiceSelected1" style="width: 100%; height:60px; margin-bottom: 15px;">Look for service</vs-button>
+        <vs-button @click="openAlert2('Note')" color="#ff7e67" :type="offerServiceSelected2" style="width: 100%; height:60px; margin-bottom: 15px;">Offer a service</vs-button>        
     </div>
 
     <div class="selection">
@@ -26,14 +26,15 @@
                 v-model="speciality"
                 color="#07689F"
                 placeholder="Select your speciality"
+                width="100%"
                 >
-                    <vs-select-item :key="index"  :value="item.value" :text="item.text" v-for="item,index in options1"/>
+                    <vs-select-item :key="index"  :value="item.value" :text="item.text" v-for="(item,index) in options1"/>
                 </vs-select>
         </div>
         
         <div>
-            <p style="font-size: 1.1rem; margin-bottom: 10px">Price HKD</p>
-            <vs-input class="inputx" placeholder="Drag it or type in the price" v-model="price"/>
+            <p style="font-size: 1.1rem; margin-bottom: 10px">Price HKD/hr</p>
+            <vs-input class="inputx full-width" placeholder="Drag it or type in the price" v-model="price"/>
             <vs-slider :min="0" :max="1000"  color="#ff7e67" v-model="price"/>
         </div>
 
@@ -53,6 +54,8 @@ export default {
 
     data(){
         return{
+            offerServiceSelected1: 'border',
+            offerServiceSelected2: 'border',
             firstname:'suang',
             colorAlert:'Note',
             titleAlert:'Alert',
@@ -88,9 +91,13 @@ export default {
                 color:'#07689F',
                 title:'Accept Selected',
                 text:'Look for service is selected',
-            })
+            },
+            this.offerServiceSelected1='filled',
+            this.offerServiceSelected2='border'
+            )
             
         },
+
         openAlert2(title){
             // this.colorAlert = color || this.getColorRandom()
             this.$vs.dialog({
@@ -107,8 +114,10 @@ export default {
                 color:'#ff7e67',
                 title:'Accept Selected',
                 text:'Offer a service is selected',
-            // accept: this.activeAlert
-        })
+            },
+            this.offerServiceSelected2='filled',
+            this.offerServiceSelected1='border'
+            )
         },
         getColorRandom(){
         function getRandomInt(min, max) {
@@ -130,7 +139,7 @@ export default {
 }
 
 .selectExample {
-  margin: 10px;
+  margin: 10px 0;
 }
 .con-select-example {
   display: flex;
@@ -140,6 +149,9 @@ export default {
 .con-select .vs-select {
   width: 100%;
 }
+.vs-con-input-lable{
+    width:100%;
+}
 @media (max-width: 550px) {
   .con-select {
     flex-direction: column;
@@ -147,6 +159,9 @@ export default {
   .con-select .vs-select {
     width: 100%
   }
+}
+.full-width{
+    width:100% !important;
 }
 
 

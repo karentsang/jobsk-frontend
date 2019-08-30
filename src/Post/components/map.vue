@@ -2,10 +2,12 @@
   <div>
     <div class="title" style="width:83%; margin: auto; margin-top: 10px; margin-bottom: 10px;">
         <p style="font-size: 1.1rem; margin-bottom: 10px">Location</p>
-        <vs-input class="inputx" placeholder="Point it or type in the location" v-model="marker"/>
+        <div style="display:flex">
+            <vs-input style="margin-bottom: 10px" v-on:keydown.enter="getAddressLocation"  class="inputx full-width" placeholder="Point it or type in the location" v-model="address"/>
+        </div>
     </div>
     <GmapMap
-        :center="{lat:22.339082, lng:114.1490733}"
+        :center="currentposition"
         :zoom="12"
         :options="{
             zoomControl: false,
@@ -20,19 +22,17 @@
         style="width: 100%; height: 500px; justify-content: center; margin: auto;"
         >
         <GmapMarker 
-            :key="index" 
-            v-for="(m, index) in markers"
-            :position="m"
+            :position="currentposition"
             :clickable="true"
             :draggable="true"
+            @dragend="onDragEnd"
         />
     </GmapMap>
-
   </div>
 </template>
 
 <script>
-
+import {gmapApi} from 'vue2-google-maps'
 // const axios = require('axios')
 export default {
   name: 'googlemapP',
@@ -42,10 +42,68 @@ export default {
 
     data(){
         return {
-                latlong: {lat: '', long: ''},
-                marker: '',
+                address: '',
+                currentposition: {lat:22.339082, lng:114.1490733},
             }
     },
+
+    computed:{
+        google: gmapApi,
+    },
+
+    created() {
+        // for example, you can call it in created hooks
+    },
+
+     methods: {
+        onDragEnd(position) {
+            this.currentposition = {"lat": position.latLng.lat(), "lng": position.latLng.lng()}
+            this.geocodedAddress()
+
+        },
+
+        getAddressLocation(input) {
+            console.log(input.target.value)
+            // console.log(this.google)
+            let geocoder = new this.google.maps.Geocoder();
+            // let theLocations = this.currentposition ;
+
+            geocoder.geocode({'address': input.target.value }, (results, status) => {
+                console.log(results)
+                if (status === 'OK') {
+                if (results[0]) {
+                    console.log(results[0].geometry.location.lat())
+                    this.currentposition = {"lat": results[0].geometry.location.lat(), "lng": results[0].geometry.location.lng()};
+                } else {
+                    console.log(status);
+                    window.alert('No results found');
+                    return null
+                }
+                }
+            })
+            
+        },
+
+        geocodedAddress() {
+            let geocoder = new this.google.maps.Geocoder();
+            let theLocations = this.marker ;
+
+            geocoder.geocode({'location': this.currentposition }, (results, status) => {
+                console.log(results)
+                if (status === 'OK') {
+                if (results[0]) {
+                    this.address = results[0].formatted_address
+                    // return theLocations.push(results[0].formatted_address);
+                } else {
+                    console.log(status);
+                    window.alert('No results found');
+                    return null
+                }
+                }
+            })
+        }
+        
+}
 
     // mounted() {
     //     axios
@@ -65,10 +123,6 @@ export default {
     //             })
     //         })
     // },
-
-    methods: {
-        
-      },
 }
 
 </script>
