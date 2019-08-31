@@ -10,15 +10,18 @@
   "dependencies": {
     "bootstrap": "^3.4.1",
     "core-js": "^2.6.5",
+    "luxon": "^1.17.2",
     "material-design-icons": "^3.0.1",
     "material-icons": "^0.3.1",
     "v-md-date-range-picker": "^2.6.0",
     "vue": "^2.6.10",
     "vue-confirmation-button": "^1.0.1",
     "vue-ctk-date-time-picker": "^2.1.1",
+    "vue-datetime": "^1.0.0-beta.10",
     "vue-router": "^3.1.2",
     "vue-star-rating": "^1.6.1",
-    "vuesax": "^3.9.0"
+    "vuesax": "^3.9.0",
+    "weekstart": "^1.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",

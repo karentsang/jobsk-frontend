@@ -1,27 +1,31 @@
 <template>
   <div>
-        <div slot="header">
-        <div style="display: flex;blackground-color:green;padding:15px,15px">
+      
+        <div style="display: flex;font-size:medium;outline:aliceblue;padding:15px,15px">
 
-            <vs-card><p>Booking {{name}}</p>       
+            <vs-card><p>Booking {{name}}!</p>       
             </vs-card>
         </div>
-        </div>
+     
+
+
         <vs-card>
-        <VueCtkDateTimePicker v-model="time"/>
+          <datetime v-model="startdatetime" type="datetime" auto='true' placeholder="select a starting time"></datetime>
+        
+        
         </vs-card>
         <vs-card>
         
-        <p>{{time}}</p>
+         <datetime v-model="enddatetime" type="datetime" auto='true' placeholder="select a ending time"></datetime>
 
         </vs-card>
 
-         <div slot="footer">
-       
-  
-        <vs-button @click="successAlert" type="filled" color="primary">Confirm</vs-button>
+         <div slot="ConfirmButtton" style="text-align: center;">
+      
+        <vs-button type="filled" color="primary">Confirm</vs-button>
 
         
+     
        
       </div>
 
@@ -39,11 +43,10 @@ export default {
     name: 'mycalendar',
     component: {    },
     data() {
-        return {
-            timeSelectForm: true,
-            dateSelectForm: false,
-            time:new Date(),    
-            name:"Suang"
+        return {  
+            name:"Suang",
+            startdatetime:'',
+            enddatetime:''
         }
     }
 }

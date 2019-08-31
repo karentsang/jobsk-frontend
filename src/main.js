@@ -8,15 +8,20 @@ import Vuesax from 'vuesax'
 import 'vuesax/dist/vuesax.css' //Vuesax styles
 Vue.use(Vuesax)
 
-import StarRating from 'vue-star-rating';
+import StarRating from 'vue-star-rating'
+import Datetime from 'vue-datetime'
+import 'vue-datetime/dist/vue-datetime.css'
 
-import VueCtkDateTimePicker from 'vue-ctk-date-time-picker';
-import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css';
+Vue.use(Datetime)
+
+//import VueCtkDateTimePicker from 'vue-ctk-date-time-picker';
+//import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css';
 
 import 'material-icons/iconfont/material-icons.css';
 
 
-Vue.component('VueCtkDateTimePicker', VueCtkDateTimePicker);
+
+//Vue.component('VueCtkDateTimePicker', VueCtkDateTimePicker);
 Vue.component('star-rating', StarRating);
 
 
