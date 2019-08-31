@@ -31,5 +31,10 @@ export default {
 </script>
 
 <style>
+#app{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+}
+
 
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="header" style="width: 100%; display: flex; margin-top: 33px;">
+    <div class="header" style="width: 100%; display: flex; margin-top: 33px; margin-bottom: 10px">
 
         <div ref="parentSidebar" id="parentx" style="width: 20%; display: flex; place-content: center;">
 
@@ -17,7 +17,7 @@
 
                 <vs-sidebar-item  color="#07689F" index="1" icon="question_answer">
                     <router-link to="/profile/mypost">
-                        Your Post
+                        Your Job Post
                     </router-link>
                 </vs-sidebar-item>
 

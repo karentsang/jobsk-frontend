@@ -1,9 +1,9 @@
 <template>
     <div class='filter'>
 
-        <h1 class='filter_titile' style='font-size: 20px; text-align: center; padding-top: 10px;'>
+        <h3 class='filter_titile' style='font-size: 20px; text-align: center; padding-top: 10px;'>
             Find your JOBSKer
-        </h1>
+        </h3>
 
 
         <div class='filter_tab' style="display: flex; flex-wrap: wrap; margin-top: 15px; justify-content: space-around;">
