@@ -11,8 +11,11 @@ import 'material-icons/iconfont/material-icons.css';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import StarRating from 'vue-star-rating';
-import VueCtkDateTimePicker from 'vue-ctk-date-time-picker';
-import 'vue-ctk-date-time-picker/dist/vue-ctk-date-time-picker.css';
+import Datetime from 'vue-datetime'
+import 'vue-datetime/dist/vue-datetime.css'
+
+Vue.use(Datetime)
+
 
 
 
