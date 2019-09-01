@@ -10,7 +10,7 @@
                         <p style="width: 100%; margin: 1px">Price: {{price}}</P>
                     </div>
                 </div>
-                <p style="width: 100%; margin: 1px">Location: {{location}}</P>
+                <p style="width: 100%; margin: 1px; margin-left: 10px">Location: {{location}}</P>
                 <acceptrejectcard/>
 
             </vs-collapse-item>
@@ -24,8 +24,8 @@
                         <p style="width: 100%; margin: 1px">Price: {{price}}</P>
                     </div>
                 </div>
-                <p style="width: 100%; margin: 1px">Status: {{status}}</P>
-                <p style="width: 100%; margin: 1px">Location: {{location}}</P>
+                <p style="width: 100%; margin: 1px; margin-left: 10px">Status: {{status}}</P>
+                <p style="width: 100%; margin: 1px; margin-left: 10px">Location: {{location}}</P>
             </vs-collapse-item>
 
     </div>

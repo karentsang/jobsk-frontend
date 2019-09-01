@@ -50,7 +50,7 @@ export default {
         this.$vs.dialog({
             color: '#ff7e67',
             title: 'Note',
-            text: 'Once you accept it, a declined notification will send to opposite.',
+            text: 'Once you accept it, a declined notification will send to opposite. *You can just accept the one you want and the rest will auto reject.',
             accept:this.acceptAlert2
             })
         },

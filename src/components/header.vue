@@ -14,23 +14,21 @@
                     </h4>
 
                 </div>
-
-                <vs-sidebar-item  color="#07689F" index="1" icon="question_answer">
-                    <router-link to="/profile/mypost">
-                        Your Job Post
-                    </router-link>
-                </vs-sidebar-item>
-
-                <vs-sidebar-item color="#07689F" index="2" icon="gavel">
-                    Service Categories
-                </vs-sidebar-item>
-
+                
                 <vs-divider color="#07689F" icon="person" position="left">
                     User
                 </vs-divider>
 
-                <vs-sidebar-item color="#07689F" index="3" icon="account_box">
-                    Profile
+                <vs-sidebar-item color="#07689F" index="1" icon="account_box">
+                    <router-link to="/">
+                        Home
+                    </router-link>
+                </vs-sidebar-item>
+
+                <vs-sidebar-item  color="#07689F" index="2" icon="question_answer">
+                    <router-link to="/profile/mypost">
+                        Your Job Post
+                    </router-link>
                 </vs-sidebar-item>
 
                 <div class="footer-sidebar" slot="footer">
