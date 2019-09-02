@@ -3,7 +3,7 @@
 
             <vs-collapse-item>
                 <div slot="header" style="border-bottom: inset; display: flex; background-color: rgba(255,126,103,0.75); border-radius: 9px ">
-                    <img style="width: 30%; display: flex; padding: 9px;" src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"/>
+                    <img style="width: 30%; height:30%; display: flex; padding: 9px;" src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"/>
                     <div style="width: 70%; display: flex; padding: 9px; flex-wrap: wrap; font-family: 'Pavanam', sans-serif;">
                         <p style="width: 100%; margin: 1px">Name: demanding</P>
                         <p style="width: 100%; margin: 1px">Speciality: {{speciality}}</P>
@@ -17,7 +17,7 @@
             
             <vs-collapse-item>
                 <div slot="header" style="border-bottom: inset; display: flex; background-color: rgba(7,104,159,0.75); border-radius: 9px  ">
-                    <img style="width: 30%; display: flex; padding: 9px;" src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"/>
+                    <img style="width: 30%; height:30%; display: flex; padding: 9px;" src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"/>
                     <div style="width: 70%; display: flex; padding: 9px; flex-wrap: wrap; font-family: 'Pavanam', sans-serif;">
                         <p style="width: 100%; margin: 1px">Name: offering</P>
                         <p style="width: 100%; margin: 1px">Speciality: {{speciality}}</P>
