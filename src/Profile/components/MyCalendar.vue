@@ -49,8 +49,8 @@ export default {
     data() {
         return {  
             name:"Suang",
-            startdatetime:'',
-            enddatetime:''
+            startdatetime:true,
+            enddatetime:true
         }
     }
 }

@@ -11,7 +11,7 @@ import 'material-icons/iconfont/material-icons.css';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import StarRating from 'vue-star-rating';
-import Datetime from 'vue-datetime'
+import Datetime from 'vue-datetime';
 import 'vue-datetime/dist/vue-datetime.css'
 
 Vue.use(Datetime)
@@ -30,7 +30,7 @@ Vue.use(VueGoogleMaps, {
 // Vue.use(BootstrapVue)
 Vue.use(Vuesax);
 Vue.use(ElementUI)
-Vue.component('VueCtkDateTimePicker', VueCtkDateTimePicker);
+// Vue.component('VueCtkDateTimePicker', VueCtkDateTimePicker);
 Vue.component('star-rating', StarRating);
 
 
