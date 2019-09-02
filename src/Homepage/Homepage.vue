@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id='homepage'>
 
     <div class="slogan" style="width:100%; height: 200px; background-color:#FAFAFA; font-size: 24px; text-align: center; padding: 51px;">
         Find your local service, earn extra money with your experties, in JOBSK
@@ -11,7 +11,7 @@
         <vs-button color="#07689F" type="border" style="width: 30%; font-size: 17px"><router-link style="color:#07689F;" to="/list">Look for service</router-link></vs-button>
     </div>
 
-    <h3 style="width:90%; margin:auto; margin-bottom: 10px">Popular services</h3>
+    <h3 style="width:90%; margin:auto; margin-bottom: 10px;">Popular services</h3>
     
     <slide :items="[1,2,3]"/>
 
@@ -42,5 +42,16 @@ export default {
 </script>
 
 <style>
-
+#homepage{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+}
+h3{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+}
+button{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+}
 </style>

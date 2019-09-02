@@ -30,7 +30,7 @@ Vue.use(VueGoogleMaps, {
 // Vue.use(BootstrapVue)
 Vue.use(Vuesax);
 Vue.use(ElementUI)
-// Vue.component('VueCtkDateTimePicker', VueCtkDateTimePicker);
+
 Vue.component('star-rating', StarRating);
 
 
