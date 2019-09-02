@@ -127,17 +127,10 @@ export default {
         firstname: firstname,
         img: img
       })
-      console.log(response)
+      this.token = response.data.access_token.token
 
-    },
-    async postGoogle() {
-      console.log("post")
-      return await axios.post("http://127.0.0.1:3333/oauth",{
-        email: this.email,
-        uid: uid,
-        firstname: firstname,
-        img: img
-      })
+      localStorage.setItem("token", this.token);
+      localStorage.setItem("user", this.email);
     }
   }
 };
@@ -170,7 +163,7 @@ vs-input {
 
 .inputbox{
   margin: 10px 0px 0px;
-  width: 100%;
+  width: 100% !important;
 }
 
 .button {
