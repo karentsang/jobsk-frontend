@@ -20,6 +20,7 @@
     "vue-axios": "^2.1.4",
     "vue-confirmation-button": "^1.0.1",
     "vue-ctk-date-time-picker": "^2.1.1",
+    "vue-google-login": "^2.0.2",
     "vue-router": "^3.1.2",
     "vue-star-rating": "^1.6.1",
     "vue2-google-maps": "^0.10.7",
