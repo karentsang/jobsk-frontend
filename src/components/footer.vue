@@ -1,7 +1,7 @@
 <template>
     <div>
 
-        <footer style="display: flex; margin-top: 20px; background-color:#FAFAFA; width: 100%; height: 100px">
+        <footer style="display: flex; margin-top: 20px; background-color:#FAFAFA; width: 100%; height: 100px;">
             <div style="width: 50%; text-align: center; margin: auto;">
                 <img style="width: 125px;" src="https://res.cloudinary.com/suang/image/upload/v1567159292/JOBSK/footer_h3lrbu.png"/>
                 <p style="font-size: x-small;" >Privacy Policy|Term of service</p>

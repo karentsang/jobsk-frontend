@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 import {gmapApi} from 'vue2-google-maps'
 // const axios = require('axios')
 export default {

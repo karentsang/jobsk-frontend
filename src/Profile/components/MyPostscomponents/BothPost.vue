@@ -43,6 +43,7 @@ export default {
     },
     data(){
         return{
+            posts: Array,
             name:'',
             speciality:'123123',
             price:'123',

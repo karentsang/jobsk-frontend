@@ -13,6 +13,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import StarRating from 'vue-star-rating';
 import Datetime from 'vue-datetime'
 import 'vue-datetime/dist/vue-datetime.css'
+import VueAwesomeSwiper from 'vue-awesome-swiper'
+import 'swiper/dist/css/swiper.css'
 
 Vue.use(Datetime)
 
@@ -31,6 +33,7 @@ Vue.use(VueGoogleMaps, {
 Vue.use(Vuesax);
 Vue.use(ElementUI)
 Vue.component('star-rating', StarRating);
+Vue.use(VueAwesomeSwiper, /* { default global options } */)
 
 
 
