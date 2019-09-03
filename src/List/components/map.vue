@@ -74,7 +74,7 @@ export default {
 
     mounted() {
         axios
-            .get("http://127.0.0.1:3333/index")
+            .get("http://localhost:3333/post")
             .then(response => {
                 this.markers = response.data.map(map => {
                     return {

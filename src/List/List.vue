@@ -2,15 +2,16 @@
   <div>
     <jobfilter/>
     <googlemap/>
+    <pending  v-if="bookingConfirmed" :bookingInfo="bookingInfo"/>
     <h3><router-link to="/profile/mycalendar">book now</router-link></h3>
      <div class="centerx">
     <vs-button @click="popupActivo1=true" color="danger" type="border">booking</vs-button>
     <vs-popup fullscreen title="fullscreen" :active.sync="popupActivo1">
       <vs-card>
-      <datetime v-model="startdatetime" type="datetime" auto='true' placeholder="select a starting time"></datetime>
+      <datetime v-model="startdatetime" type="datetime" :auto='true' placeholder="select a starting time"></datetime>
       </vs-card>
       <vs-card>
-      <datetime v-model="enddatetime" type="datetime" auto='true' placeholder="select a ending time"></datetime>
+      <datetime v-model="enddatetime" type="datetime" :auto='true' placeholder="select a ending time"></datetime>
      </vs-card>
       
         <div class="ConfirmButtton" style="text-align: center;">
@@ -45,7 +46,8 @@ export default {
     return{
        popupActivo1:false,
        startdatetime:'',
-       enddatetime:''
+       enddatetime:'',
+       bookingConfirmed: false
        
     }
     

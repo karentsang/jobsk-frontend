@@ -22,7 +22,7 @@
 
          <div slot="ConfirmButtton" style="text-align: center;">
       
-        <vs-button type="filled" color="primary">Confirm</vs-button>
+        <vs-button type="filled" color="primary" @click="makebooking">Confirm</vs-button>
 
         
      
@@ -42,6 +42,24 @@ export default {
     methods: {
       successAlert() {
 
+      },
+      makebooking(){
+        console.log("making")
+        // axios.post("http://127.0.0.1:3333/post/:id/booking/create")
+        //     .then(response => {
+        //         this.markers = response.data.map(map => {
+        //             return {
+        //                 id: map.id,
+        //                 model: map.model,
+        //                 price: map.price,
+        //                 status: map.status,
+        //                 lat: parseFloat(map.lat),
+        //                 lng: parseFloat(map.long),
+        //                 image: map.image,
+        //                 availability: map.availability,
+        //             }
+        //         })
+        //     })
       }
     },
     name: 'mycalendar',

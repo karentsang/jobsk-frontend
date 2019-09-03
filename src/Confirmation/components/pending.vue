@@ -18,42 +18,49 @@
         <img class="full-width-image" :src="`https://picsum.photos/400/400?image=1`" alt="">
    
       </div>
-      <div style= "align:center" >
-      <div>{{name}}</div> 
-      <div>{{Location}}</div> 
-      <div>Speciality: {{Speciality}}</div> 
-      <div>Price:{{Price}}</div> 
-      <div>District:{{District}}</div> 
-      <div>Availablity:{{Availablity}}</div> 
-      </div>
-      
-         <star-rating
-           v-bind:increment="0.5"
+      <div class= "profile" align="center" >
+      <div>
+      <p>{{name}}</p> 
+      <p>{{Location}}</p> 
+      <p>Speciality: {{Speciality}}</p> 
+      <p>Price:{{Price}}</p> 
+      <p>District:{{District}}</p> 
+      <p>Availablity:{{Availablity}}</p> 
+        <p> <star-rating
+            class="star"
+            align="center"
+             v-bind:increment="0.5"
              v-bind:max-rating="5"
              inactive-color="slier"
              active-color="yellow"
              border-color="black"
-             v-bind:star-size="18">
+             v-bind:star-size="18"
+             style="margin: auto; justify-content: center;">
        </star-rating>
+       </p>
+      </div>
       <p><br><br> </p>
    
    
-  <div class="centerx">
-    <vs-button @click="popupActivo1=true" color="danger" type="border">Your booking details</vs-button>
+  <div class="centerx" style="margin: auto; justify-content: center;">
+    <vs-button @click="popupActivo1=true"  color="danger" type="border">Your booking details</vs-button>
     <vs-popup fullscreen title="fullscreen" :active.sync="popupActivo1">
       <p>Sung is a professional plumber and have experience of plumbing for 12years.You have booked Suang for four-days plumbing package!Good choice! </p>
     </vs-popup>
   </div>
+  <br><br> 
 
-      <div slot="footer">
-        <vs-row vs-justify="flex-end">
-        <div class="center">
-          {{status}}
-        <vs-button @click="openLoading" type="filled" color="primary"><router-link to="/profile/mypost">Check your post</router-link></vs-button>
-    </div>
+      <div class>
+        <!--vs-row vs-justify="flex-end"-->
+        <!--div class="center"-->
         
-        </vs-row>
-      </div>
+     <vs-button @click="openLoading" align="center" margin="auto" type="filled" color="primary"><router-link to="/profile/mypost">{{status}}</router-link></vs-button>
+    </div>
+    
+    </div> 
+        
+        <!--/vs-row-->
+      <!--/div-->
     </vs-card>
   </vs-col>
 </vs-row>
@@ -76,6 +83,9 @@
 //})
 
 export default {
+  props: {
+    bookingInfo: Object
+  },  
     data() {
     return{
         status: 'Pending',
@@ -89,12 +99,15 @@ export default {
      
     }
     } ,
+    mounted() {
+
+    },
      methods:{
-    openLoading(){
-      this.$vs.loading()
-      setTimeout( ()=> {
-        this.$vs.loading.close()
-      }, 2000);
+      openLoading(){
+        this.$vs.loading()
+        setTimeout( ()=> {
+          this.$vs.loading.close()
+        }, 2000);
     },
   },
 
@@ -108,13 +121,8 @@ export default {
 </script>
 
 <style>
-/* element.style {
-    justify-content: center;
-    display: flex;
-    width: 90%;
-    margin: auto;
-    
-} */
+
+
 .vs-images{
   justify-content: center; 
   width:90%;
@@ -122,17 +130,8 @@ export default {
   margin: auto;
 }
 
-.star-rating{
-  align-content: center;
-  justify-content: center; 
-  width:90%;
-  display: flex;
-  margin: auto;
-}
 
-.center {
-  text-align: center;
-}
+
 
 .material-icons.md-18 { font-size: 18px; }
 
