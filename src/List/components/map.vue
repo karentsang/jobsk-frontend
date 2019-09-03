@@ -119,18 +119,18 @@ export default {
          console.log('Current Index of slide',this.$refs.mySwiper.swiper ,this.$refs.mySwiper.swiper.realIndex)
          console.log(this.selected)
          this.selected = this.$refs.mySwiper.swiper.realIndex
-        //  let currentMarker = this.markers[this.$refs.mySwiper.swiper.realIndex]
-        //  console.log(currentMarker)
-        //  currentMarker.icon = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+         let currentMarker = this.markers[this.$refs.mySwiper.swiper.realIndex]
+         console.log(currentMarker)
+         currentMarker.icon = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
 
-        // this.icon[this.$refs.mySwiper.swiper.realIndex] = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+        this.icon[this.$refs.mySwiper.swiper.realIndex] = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
           
-        //   let marker = new google.maps.Marker({
-        //     position: {lat: currentMarker.lat, lng: currentMarker.lng },
-        //     icon: {
-        //       url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-        //     }
-        //   });
+          let marker = new google.maps.Marker({
+            position: {lat: currentMarker.lat, lng: currentMarker.lng },
+            icon: {
+              url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+            }
+          });
         },
         toggleInfoWindow: function (marker, idx) {
 

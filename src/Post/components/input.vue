@@ -14,12 +14,12 @@
 
     <div class="centerx">
 
-        <vs-button  v-on:click="inputForm.type='service'" color="#07689F" :type="offerServiceSelected1" 
+        <vs-button  v-on:click="inputForm.type='Providing'" @click="openAlert1('Note');isHidden = true" color="#07689F" :type="offerServiceSelected1" 
         style="width: 100%; height:60px; margin-bottom: 15px; justify-content: center;" >
         Look for service
         </vs-button>
 
-        <vs-button v-on:click="isHidden = true" @click="openAlert2('Note')" color="#ff7e67" :type="offerServiceSelected2" 
+        <vs-button  v-on:click="inputForm.type='Offering'" @click="openAlert2('Note'); isHidden = false" color="#ff7e67" :type="offerServiceSelected2" 
         style="width: 100%; height:60px; margin-bottom: 15px; justify-content: center;">
         Offer a service
         </vs-button>       
@@ -38,6 +38,7 @@
             server="http://localhost:3333/upload"
             v-bind:files="file"
             :onprocessfile="upload"
+
         />
     </div>
 
@@ -47,7 +48,7 @@
                 <vs-select
                 class="selectExample"
                 label=""
-                v-model="inputForm.speciality"
+                v-model="inputForm.category"
                 color="#07689F"
                 placeholder="Select your speciality"
                 width="100%"
@@ -58,13 +59,13 @@
         
         <div>
             <p style="font-size: 1.1rem; margin-bottom: 10px">Price HKD/hr</p>
-            <vs-input class="inputx full-width" placeholder="Drag it or type in the price" v-model="price"/>
-            <vs-slider :min="0" :max="1000"  color="#ff7e67" v-model="price"/>
+            <vs-input class="inputx full-width" placeholder="Drag it or type in the price" v-model="inputForm.price"/>
+            <vs-slider :min="0" :max="1000"  color="#ff7e67" v-model="inputForm.price"/>
         </div>
 
-        <div v-if="!isHidden">
+        <div v-if="isHidden">
             <p style="font-size: 1.1rem; margin-bottom: 10px">Date and Time</p>
-            <datetime v-model="bookingdate" type="datetime" auto='true' placeholder="When you need the service?"
+            <datetime v-model="bookingdate" type="datetime" :auto='true' placeholder="When you need the service?"
             input-style="border: 1px solid rgba(0, 0, 0, 0.2); width: 100%; height: 33px; border-radius: 5px; font-family: 'Montserrat', sans-serif; font-weight: 100; padding: 6.4px;"
             ></datetime>
         </div>
@@ -110,7 +111,7 @@ export default {
             activeAlert:false,
             valueInput:'',
             select1Normal:'',
-            speciality: '',
+            category: '',
             options1:[
                 {text:'Blade Runner',value:'Blade Runner'},
                 {text:'Thor Ragnarok',value: 'Thor Ragnarok'},
@@ -177,7 +178,7 @@ export default {
 
         upload(err, file){
             let image = JSON.parse(file.serverId)
-            this.picture = image.url
+            this.inputForm.post_img = image.url
         }
     }
 }
