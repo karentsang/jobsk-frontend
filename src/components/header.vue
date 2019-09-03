@@ -14,10 +14,6 @@
                     </h4>
 
                 </div>
-                
-                <vs-divider color="#07689F" icon="person" position="left">
-                    User
-                </vs-divider>
 
                 <vs-sidebar-item color="#07689F" index="1" icon="account_box">
                     <router-link to="/">
@@ -56,8 +52,8 @@ export default {
 
     data:()=>({
         active:false,
-        name:'Suang',
-        profileimg:"https://randomuser.me/api/portraits/men/85.jpg"
+        name:'name',
+        profileimg:"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1024px-Circle-icons-profile.svg.png"
     })
 }    
 </script>
