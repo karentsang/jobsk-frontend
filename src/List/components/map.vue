@@ -41,7 +41,7 @@
 
         <!-- swiper -->
         <swiper :options="swiperOption" @slideChange="handleSlideChange" ref="mySwiper">
-          <swiper-slide v-for="marker in markers" v-bind:key="marker.id">
+          <swiper-slide v-for="(marker, index) in markers" v-bind:key="index">
             <div class="card" style="display: flex; flex-direction: row;">
               <div class="card-image" style="float: left;">
                 <figure class="image is-4by3" style="display: flex; flex-direction: row; margin: 0 0 0rem;">
@@ -58,7 +58,7 @@
                     <div class="status-content">
                       Category: {{marker.category}}
                     </div>
-                    <a href="/booking"><button class="el-button el-button--default" style="color:#42b983; background-color:#080024;">Book it!</button></a>
+                    <button class="el-button el-button--default" style="color:#42b983; background-color:#080024;" @click="goToPage(marker.id, marker.type)">Book it!</button>
                   </div>
                 </figure>
               </div>
@@ -67,6 +67,19 @@
           <div class="swiper-scrollbar" slot="scrollbar"></div>
         </swiper>
 
+      <!-- <vs-button @click="popupActive=true" color="danger" type="border">booking</vs-button> -->
+      <vs-popup fullscreen title="fullscreen" :active.sync="popupActive">
+        <vs-card>
+        <datetime v-model="startdatetime" type="datetime" :auto='true' placeholder="select a starting time"></datetime>
+        </vs-card>
+        <vs-card>
+        <datetime v-model="enddatetime" type="datetime" :auto='true' placeholder="select a ending time"></datetime>
+      </vs-card>
+        
+          <div class="ConfirmButtton" style="text-align: center;">
+          <vs-button type="filled" color="primary" @click="createBooking">Confirm</vs-button>
+          </div>
+      </vs-popup>
   </div>
 </template>
 
@@ -86,6 +99,9 @@ export default {
 
     data(){
         return {
+       startdatetime:'',
+       enddatetime:'',
+       popupActive:false,
           selectedCar: false,
           latlong: {lat: '', long: ''},
           // markersPosition: [],
@@ -115,7 +131,35 @@ export default {
     },
 
     methods: {
-        handleSlideChange() {
+      goToPage(id, type) {
+        console.log("go")
+        // this.$router.push({ path: 'register', query: { id: id, type: type } })
+        this.popupActive=true
+
+      },
+
+      createBooking() {
+        let selectedPost = this.markers[this.$refs.mySwiper.swiper.realIndex]
+        console.log("createBooking")
+        console.log(selectedPost)
+        console.log(this.startdatetime)
+        console.log(this.enddatetime)
+        this.popupActive=false
+
+        axios
+          .post('http://127.0.0.1:3333/post/' + selectedPost.id + '/booking/create', {
+            start_date: this.startdatetime,
+            end_date: this.enddatetime,
+            user_id: 1, // Todo: testing only
+          })
+          .then(response => {
+            console.log(response)
+
+            this.$router.push({ path: '/confirmation/pending', query: { bookingId: response.data.id} })
+          })
+
+      },
+      handleSlideChange() {
          console.log('Current Index of slide',this.$refs.mySwiper.swiper ,this.$refs.mySwiper.swiper.realIndex)
          console.log(this.selected)
          this.selected = this.$refs.mySwiper.swiper.realIndex
@@ -136,7 +180,7 @@ export default {
 
         //   console.log(marker)
         this.infoWindowPos = { lat: marker.lat, lng: marker.lng };
-        this.infoContent = this.getInfoWindowContent(marker);
+        // this.infoContent = this.getInfoWindowContent(marker);
         
 
         //check if its the same marker that was selected if yes toggle
