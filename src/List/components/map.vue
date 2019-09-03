@@ -103,8 +103,8 @@ export default {
             },
           },
           swiperOption: {
-            slidesPerView: 1.3,
-            spaceBetween: 30,
+            slidesPerView: 1,
+            spaceBetween: -30,
             pagination: {
               el: '.swiper-pagination',
               clickable: true

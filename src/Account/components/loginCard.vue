@@ -4,19 +4,19 @@
       <vs-card class="cardx" style="padding: 10px; margin: 20px 0px;">
         <div slot="header">
           <h3 style="font-family: Arial;">
-            Sign up below
+            Log In to continue
             <!-- <vs-alert active="true">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
             </vs-alert> -->
           </h3>
         </div>
-        <div>
-          <div slot="extra-content" class="googleCard2">
+        <div class="cardBorder">
+          <div slot="extra-content" class="googleCard">
             <vs-button 
             color="#939393" 
             type="border" 
-            class="googleLogin2">
-                <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure" style="border:none">Sign Up with Google</GoogleLogin>
+            class="googleLogin">
+                <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure" style="border:none">Log In with Google</GoogleLogin>
             </vs-button>
             
           </div>
@@ -27,16 +27,9 @@
             <vs-input
               size="large"
               v-on:keyup.enter="put"
-              v-model="firstname"
-              placeholder="Name"
-              class="inputbox2"
-            />
-            <vs-input
-              size="large"
-              v-on:keyup.enter="put"
               v-model="email"
               placeholder="Email"
-              class="inputbox2"
+              class="inputbox"
             />
             <vs-input
               size="large"
@@ -44,16 +37,25 @@
               v-model="password"
               type="password"
               placeholder="Password"
-              class="inputbox2"
+              class="inputbox"
             />
             <vs-button
               @click="put"
               :color="colorx"
               :gradient-color-secondary="colorx2"
               type="gradient"
-              class="button2"
-            >Sign Up</vs-button>
+              class="button"
+            >Log In</vs-button>
           </div>
+        </div>
+
+        <div slot="footer" style="margin: 30px 0px;">
+          <vs-row vs-justify="center">
+            <div style="font-family: Arial;">
+              Don't have an account?
+              <router-link to="/account/login/signup">Sign Up!</router-link>
+            </div>
+          </vs-row>
         </div>
       </vs-card>
     </vs-col>
@@ -65,7 +67,7 @@ const axios = require("axios");
 import GoogleLogin from "vue-google-login";
 
 export default {
-  name: "SignUpCard",
+  name: "logincard",
   components: {
     GoogleLogin
   },
@@ -73,7 +75,7 @@ export default {
     return {
       email: null,
       password: null,
-      firstname:null,
+      userId: null,
       token: "",
       colorx: "#c72a75",
       colorx2: "#5252e8",
@@ -103,7 +105,7 @@ export default {
   methods: {
     test() {
       this.$swal({
-        title : "Thanks for registering!", 
+        title : "Welcome Back!", 
         text : "You are ready to start", 
         icon: "success", 
         button: "Start exploring"
@@ -111,30 +113,32 @@ export default {
         .then(() => {
           document.location.href="/"
         })
+          // { path: '/user', params: { userId } }
+          // this.$router.push({ path: '/', query: { loggedIn: true }})
     },
 
     post() {
-      return axios.post("http://127.0.0.1:3333/register", {
-        email: this.email,
-        password: this.password,
-        firstname: this.firstname
-      });
+        return axios.post("http://127.0.0.1:3333/login", {
+          email: this.email,
+          password: this.password
+        });
     },
 
     async put() {
       try {
         let response = await this.post();
         this.token = response.data.access_token.token;
-        this.userId = response.data.user.id        
+        this.userId = response.data.user.id
 
         localStorage.setItem("token", this.token);
         localStorage.setItem("user", this.email);
         localStorage.setItem("userId", this.userId);
-        
+
+        this.test()
       } catch(err) {
         this.$vs.notify(
           {
-            title:'Signup failed',
+            title:'Login failed',
             text:'Wrong username/password',
             color:'danger',
             position: 'top-right'
@@ -162,7 +166,7 @@ export default {
       localStorage.setItem("token", this.token);
       localStorage.setItem("user", this.email);
       localStorage.setItem("userId", this.userId);
-      
+
       this.test()
     }
   }
@@ -170,45 +174,26 @@ export default {
 </script>
 
 <style>
-body {
-  font-family: Helvetica Neue, Arial, sans-serif;
-  font-size: 14px;
-  color: #444;
-}
 
-.btn {
-  display: inline-block;
-  margin-bottom: 0;
-  font-weight: 400;
-  text-align: center;
-  vertical-align: middle;
-  -ms-touch-action: manipulation;
-  touch-action: manipulation;
-  background-color: #42b983;
-  cursor: pointer;
-  color: #fff;
-  border: 1px solid transparent;
-  white-space: nowrap;
-  padding: 6px 12px;
-  font-size: 14px;
-  line-height: 1.42857;
-  border-radius: 4px;
-}
 vs-input {
   margin: 10px;
 }
 
-.googleCard2 {
+.cardBorder {
+  border-bottom: 1px solid grey;
+}
+
+.googleCard {
   border-bottom: 1px solid grey;
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
 }
-.googleCard2:hover {
+.googleCard:hover {
   cursor: pointer;
 }
 
-.googleLogin2 {
+.googleLogin {
   width: 82%;
   margin: 28px 0px;
   display: flex;
@@ -216,12 +201,12 @@ vs-input {
   color: white;
 }
 
-.inputbox2 {
+.inputbox{
   margin: 10px 0px 0px;
   width: 100% !important;
 }
 
-.button2 {
+.button {
   margin: 10px auto;
   width: 100%;
   display: flex;

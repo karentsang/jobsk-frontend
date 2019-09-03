@@ -26,11 +26,12 @@ export default {
   data() {
     return {
       inputForm: {
-        category: "Thor Ragnarok",
-        price: 1500,
-        post_img: "http://res.cloudinary.com/suang/image/upload/v1567502216/cuuy1oen8kmpjnni1mhi.jpg",
-        lat: 22.323848064172918,
-        lng: 114.16139118774026
+        category: null,
+        price: null,
+        post_img: null,
+        lat: null,
+        lng: null,
+        user_id: null,
       }
 
     }
@@ -41,6 +42,7 @@ export default {
       let data = this.inputForm
       let result = await axios.post(`http://127.0.0.1:3333/post/${this.inputForm.type}/create`, data)
       console.log(result)
+      // return result
       // if(this.inputForm.type && this.inputForm.title) {
       //   this.$vs.notify()
       // } else {
@@ -57,55 +59,16 @@ export default {
         })
     },
     acceptAlert(){
-
-        // return to homepage
+      this.$router.push({name:"homepage"});
     },
-  }
-  // data() {
-  //   return {
-  //     posts: []
-  //   }
-  // },
-  // methods: {
-  //   handleData(posts) {
-  //     // console.log(markers)
-  //     this.posts = posts
-  //   }
-  // }
-  // async mounted() {
-  //     // console.log(this.$route)
-  //   if(this.$route.query.type=='Offering') {
-  //     let response = await axios.post("http://127.0.0.1:3333/post/Offering/create")
-  //     console.log(response)    
-  //     // this.posts = response.data.map(map => {
-  //     //     // return {
-  //     //     //     id: map.id,
-  //     //     //     type: map.type,
-  //     //     //     price: map.price,
-  //     //     //     category: map.category,
-  //     //     //     lat: parseFloat(map.lat),
-  //     //     //     lng: parseFloat(map.lng),
-  //     //     //     image: map.post_img,
-  //     //     // }
-  //     // })
-  //   } 
-  //   // else {
-  //   //   let response = await axios.post("http://127.0.0.1:3333/post/Providing/create")
-  //   //   console.log(response)    
+  },
+  mounted() {
+    console.log(localStorage.getItem("userId"))
 
-  //     // this.posts= response.data.map(map => {
-  //     //     return {
-  //     //         id: map.id,
-  //     //         type: map.type,
-  //     //         price: map.price,
-  //     //         category: map.category,
-  //     //         lat: parseFloat(map.lat),
-  //     //         lng: parseFloat(map.lng),
-  //     //         image: map.post_img,
-  //     //     }
-  //     // })
-  //   // }
-  // }
+    this.inputForm.user_id = localStorage.getItem("userId")
+    console.log(this.inputForm.user_id)
+
+  }
 }
 </script>
 
