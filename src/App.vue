@@ -22,10 +22,9 @@ export default {
     jobskheader,
     jobskfooter,
   },
-  data(){
-    return{
-      
-    }
+  created() {
+    // Check if localstorage has access_token
+    // If it does, dont show join button
   }
 }
 </script>

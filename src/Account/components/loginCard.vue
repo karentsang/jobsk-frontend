@@ -5,16 +5,18 @@
         <div slot="header">
           <h3 style="font-family: Arial;">
             Log In to continue
+            <!-- <vs-alert active="true">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+            </vs-alert> -->
           </h3>
         </div>
-
-        <div>
+        <div class="cardBorder">
           <div slot="extra-content" class="googleCard">
             <vs-button 
             color="#939393" 
             type="border" 
             class="googleLogin">
-                <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure">Log In with Google</GoogleLogin>
+                <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure" style="border:none">Log In with Google</GoogleLogin>
             </vs-button>
             
           </div>
@@ -100,19 +102,46 @@ export default {
     // renderParams:
   },
   methods: {
-    async put() {
-      let response = await this.post();
-      this.token = response.data.access_token.token;
+    test() {
+      this.$swal({
+        title : "Welcome Back!", 
+        text : "You are ready to start", 
+        icon: "success", 
+        button: "Start exploring"
+        })
+        .then(() => {
+          document.location.href="/"
+        })
+          // { path: '/user', params: { userId } }
+          // this.$router.push({ path: '/', query: { loggedIn: true }})
+    },
 
-      localStorage.setItem("token", this.token);
-      localStorage.setItem("user", this.email);
-    },
     post() {
-      return axios.post("http://127.0.0.1:3333/login", {
-        email: this.email,
-        password: this.password
-      });
+        return axios.post("http://127.0.0.1:3333/login", {
+          email: this.email,
+          password: this.password
+        });
     },
+
+    async put() {
+      try {
+        let response = await this.post();
+        this.token = response.data.access_token.token;
+
+        localStorage.setItem("token", this.token);
+        localStorage.setItem("user", this.email);
+        this.test()
+      } catch(err) {
+        this.$vs.notify(
+          {
+            title:'Login failed',
+            text:'Wrong username/password',
+            color:'danger',
+            position: 'top-right'
+          })
+      }
+    },
+
     async onSuccess(googleUser) {
       console.log(googleUser);
       // This only gets the user information: id, name, imageUrl and email
@@ -131,6 +160,8 @@ export default {
 
       localStorage.setItem("token", this.token);
       localStorage.setItem("user", this.email);
+
+      this.test()
     }
   }
 };
@@ -142,7 +173,7 @@ vs-input {
   margin: 10px;
 }
 
-.vs-card--content {
+.cardBorder {
   border-bottom: 1px solid grey;
 }
 
@@ -151,6 +182,9 @@ vs-input {
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
+}
+.googleCard:hover {
+  cursor: pointer;
 }
 
 .googleLogin {
