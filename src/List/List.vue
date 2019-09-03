@@ -1,7 +1,7 @@
 <template>
   <div>
-    <jobfilter/>
-    <googlemap/>
+    <jobfilter @changeFilter="handleData"/>
+    <googlemap :markers="markers"/>
     <h3><router-link to="/profile/mycalendar">book now</router-link></h3>
      <div class="centerx">
     <vs-button @click="popupActivo1=true" color="danger" type="border">booking</vs-button>
@@ -27,6 +27,7 @@ import jobfilter from '@/List/components/filter.vue'
 import googlemap from '@/List/components/map.vue'
 import datetime from'@/Profile/components/MyCalendar.vue'
 
+import axios from 'axios'
 
 export default {
    methods: {
@@ -34,6 +35,11 @@ export default {
       }},
  
   name: 'list',
+  data() {
+    return {
+      markers: []
+    }
+  },
   components:{
       googlemap,
       jobfilter,
@@ -49,8 +55,44 @@ export default {
        
     }
     
-  }
-  
+  },
+  methods: {
+    handleData(markers) {
+      // console.log(markers)
+      this.markers = markers
+    }
+  },
+  async mounted() {
+      // console.log(this.$route)
+      if(this.$route.query.type=='Offering') {
+        let response = await axios.get("http://127.0.0.1:3333/post/Offering")
+            
+        this.markers = response.data.map(map => {
+            return {
+                id: map.id,
+                type: map.type,
+                price: map.price,
+                category: map.category,
+                lat: parseFloat(map.lat),
+                lng: parseFloat(map.lng),
+                image: map.post_img,
+            }
+        })
+      } else {
+        let response = await axios.get("http://127.0.0.1:3333/post/Providing")
+        this.markers = response.data.map(map => {
+            return {
+                id: map.id,
+                type: map.type,
+                price: map.price,
+                category: map.category,
+                lat: parseFloat(map.lat),
+                lng: parseFloat(map.lng),
+                image: map.post_img,
+            }
+        })
+      }
+    }
 }
 </script>
 

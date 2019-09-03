@@ -13,8 +13,32 @@
     </vs-card>
 
     <div class="centerx">
-        <vs-button @click="openAlert1('Note')" color="#07689F" :type="offerServiceSelected1" style="width: 100%; height:60px; margin-bottom: 15px; justify-content: center;">Look for service</vs-button>
-        <vs-button @click="openAlert2('Note')" color="#ff7e67" :type="offerServiceSelected2" style="width: 100%; height:60px; margin-bottom: 15px; justify-content: center;">Offer a service</vs-button>        
+
+        <vs-button  v-on:click="inputForm.type='service'" color="#07689F" :type="offerServiceSelected1" 
+        style="width: 100%; height:60px; margin-bottom: 15px; justify-content: center;" >
+        Look for service
+        </vs-button>
+
+        <vs-button v-on:click="isHidden = true" @click="openAlert2('Note')" color="#ff7e67" :type="offerServiceSelected2" 
+        style="width: 100%; height:60px; margin-bottom: 15px; justify-content: center;">
+        Offer a service
+        </vs-button>       
+
+        <!-- <vs-upload class="upload" limit=1 automatic action="https://jsonplaceholder.typicode.com/posts/" @on-success="successUpload"/> -->
+
+    </div>
+
+    <div class="upload">
+        <p style="font-size: 1.1rem;">Upload Image</p>
+        <file-pond
+            name="image" 
+            label-idle="Drop files here..."
+            allow-multiple="false"
+            accepted-file-types="image/jpeg, image/png"
+            server="http://localhost:3333/upload"
+            v-bind:files="file"
+            :onprocessfile="upload"
+        />
     </div>
 
     <div class="selection">
@@ -23,7 +47,7 @@
                 <vs-select
                 class="selectExample"
                 label=""
-                v-model="speciality"
+                v-model="inputForm.speciality"
                 color="#07689F"
                 placeholder="Select your speciality"
                 width="100%"
@@ -38,22 +62,46 @@
             <vs-slider :min="0" :max="1000"  color="#ff7e67" v-model="price"/>
         </div>
 
+        <div v-if="!isHidden">
+            <p style="font-size: 1.1rem; margin-bottom: 10px">Date and Time</p>
+            <datetime v-model="bookingdate" type="datetime" auto='true' placeholder="When you need the service?"
+            input-style="border: 1px solid rgba(0, 0, 0, 0.2); width: 100%; height: 33px; border-radius: 5px; font-family: 'Montserrat', sans-serif; font-weight: 100; padding: 6.4px;"
+            ></datetime>
+        </div>
+
     </div>
 
   </div>
 </template>
 
 <script>
-
+import axios from 'axios'
+// Import Vue FilePond
+import vueFilePond from 'vue-filepond';
+ 
+// Import FilePond styles
+import 'filepond/dist/filepond.min.css';
+ 
+// Import image preview plugin styles
+import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.min.css';
+ 
+// Import image preview and file type validation plugins
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+ 
+// Create component
+const FilePond = vueFilePond(FilePondPluginImagePreview);
 
 export default {
   name: 'inputP',
   components:{
-      
+      FilePond
   },
 
+    props: ['inputForm'],
     data(){
         return{
+            isHidden: true,
+            bookingdate: '',
             offerServiceSelected1: 'border',
             offerServiceSelected2: 'border',
             firstname:'suang',
@@ -64,13 +112,14 @@ export default {
             select1Normal:'',
             speciality: '',
             options1:[
-                {text:'',value:0},
-                {text:'Blade Runner',value:2},
-                {text:'Thor Ragnarok',value:3},
+                {text:'Blade Runner',value:'Blade Runner'},
+                {text:'Thor Ragnarok',value: 'Thor Ragnarok'},
             ],
             price:'',
             widthx:55,
             heightx:55,
+            file:[],
+            picture:'',
         }
     },
 
@@ -126,6 +175,10 @@ export default {
         return `rgb(${getRandomInt(0,255)},${getRandomInt(0,255)},${getRandomInt(0,255)})`
         },
 
+        upload(err, file){
+            let image = JSON.parse(file.serverId)
+            this.picture = image.url
+        }
     }
 }
 
