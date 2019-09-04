@@ -1,32 +1,50 @@
 <template>
-<div >
-    
-   
-  <vs-row vs-justify="center" vs-w="12" vs-type="flex" >
-  <vs-col vs-type="flex" vs-justify="center" vs-align="center" vs-xs="12" vs-sm="4">
-    <vs-card>
-       
-         
+<div>
+
+  
       <div slot="header">
-        <div style="display: flex;blackground-color:yellow;padding:15px,15px">
+        <div style="display: flex;blackground-color:yellow;margin:25px;padding:auto">
             <vs-icon icon="send" size="small" color="orange"></vs-icon>
-            <vs-card><p>Request Sent!<br>Waiting for the confirmation<br></p>       
+            <vs-card><p>Request Sent!<br>Waiting for the confirmation<br>
+            <p>{{startdatetime}}</P>
+            <p>{{enddatetime}}</P>
+            </p>       
             </vs-card>
         </div>
+        </div>
 
-        <div slot="media"></div>
-        <img class="full-width-image" :src="`https://picsum.photos/400/400?image=1`" alt="">
-   
-      </div>
-      <div class= "profile" align="center" >
-      <div>
-      <p>{{name}}</p> 
-      <p>{{Location}}</p> 
+      
+        <vs-row vs-justify="center">
+    <vs-col type="flex" vs-justify="center" vs-align="center" vs-w="9">
+      <vs-card class="cardx">
+        <div slot="header">
+          <p>{{name}}</p> 
+          <p>{{Location}}</p>
+          
+        </div>
+        <div slot="media">
+          <img class="full-width-image" :src="`https://picsum.photos/400/400?image=1`" alt="">
+        </div>
+        <div>
+          <span>
       <p>Speciality: {{Speciality}}</p> 
       <p>Price:{{Price}}</p> 
       <p>District:{{District}}</p> 
       <p>Availablity:{{Availablity}}</p> 
-        <p> <star-rating
+          </span>
+        </div>
+        <div slot="footer">
+          <vs-row vs-justify="flex-end">
+              <vs-button @click="put" color="danger" type="gradient" class="button"
+            ><router-link to="/profile/mypost">More Posts</router-link></vs-button>
+
+          </vs-row>
+        </div>
+      </vs-card>
+    </vs-col>
+    </vs-row>
+
+        <!--p> <star-rating
             class="star"
             align="center"
              v-bind:increment="0.5"
@@ -38,49 +56,16 @@
              style="margin: auto; justify-content: center;">
        </star-rating>
        </p>
-      </div>
-      <p><br><br> </p>
-   
-   
-  <div class="centerx" style="margin: auto; justify-content: center;">
-    <vs-button @click="popupActivo1=true"  color="danger" type="border">Your booking details</vs-button>
-    <vs-popup fullscreen title="fullscreen" :active.sync="popupActivo1">
-      <p>Sung is a professional plumber and have experience of plumbing for 12years.You have booked Suang for four-days plumbing package!Good choice! </p>
-    </vs-popup>
-  </div>
-  <br><br> 
-
-      <div class>
-        <!--vs-row vs-justify="flex-end"-->
-        <!--div class="center"-->
-        
-     <vs-button @click="openLoading" align="center" margin="auto" type="filled" color="primary"><router-link to="/profile/mypost">{{status}}</router-link></vs-button>
-    </div>
+      </div-->
     
+   
+
     </div> 
-        
-        <!--/vs-row-->
-      <!--/div-->
-    </vs-card>
-  </vs-col>
-</vs-row>
-
-
-    </div>  
 </template>
 
 <script>
-//new Vue({
-  //el: '#app',
-  //methods: {
-    //setRating: function(rating){
-      //this.rating= rating;
-    //}
- // },
-  //data: {
-    //rating: 0
-  //}
-//})
+import datetime from'@/Profile/components/MyCalendar.vue'
+
 
 export default {
   props: {
@@ -88,15 +73,16 @@ export default {
   },  
     data() {
     return{
-        status: 'Pending',
-        name:"Suang",
-        Location:"Lai Chi Kok",
-        Speciality:"Plumbing",
-        Price:"$40/hour",
-        District:"North",
-        Availablity:"Monday-Friday",
+        status:null ,
+        name: null,
+        Location:null,
+        Speciality:null,
+        Price:null,
+        District:null,
+        Availablity:null,
         popupActivo1:false,
-     
+        startdatetime:null,
+        enddatetime: null
     }
     } ,
     mounted() {

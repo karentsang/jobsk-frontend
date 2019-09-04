@@ -1,7 +1,7 @@
 <template>
   <div calss="containerP" style="width:93%; margin: auto;">
 
-    <h3 style="padding-left: 33px; font-size: 23px" > All the Job post</h3>
+    <h3 style="padding:30px; font-size: 22px" >Job posts</h3>
 
     <vs-collapse vs-value="shadow">
         <bothpost/>

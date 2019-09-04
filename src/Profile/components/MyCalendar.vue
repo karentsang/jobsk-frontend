@@ -1,36 +1,28 @@
 <template>
-  <div>
-      
-        <div style="display: flex;font-size:medium;outline:aliceblue;padding:15px,15px">
-
-            <vs-card><p>Booking {{name}}!</p>       
-            </vs-card>
-        </div>
-     
-
-
-        <vs-card>
-          <datetime v-model="startdatetime" type="datetime" auto='true' placeholder="select a starting time"></datetime>
-        
-        
+<div>
+  <div style="margin:20px">
+    <div style="display: flex;font-size:medium;margin:5px;outline:aliceblue;padding:15px,15px">
+        <vs-card><p>Booking {{name}}!</p>       
         </vs-card>
-        <vs-card>
-        
-         <datetime v-model="enddatetime" type="datetime" auto='true' placeholder="select a ending time"></datetime>
-
-        </vs-card>
-
-         <div slot="ConfirmButtton" style="text-align: center;">
-      
-        <vs-button type="filled" color="primary" @click="makebooking">Confirm</vs-button>
-
-        
-     
-       
-      </div>
-
-      
+    </div>
   </div>
+
+  <div style="margin:20px">
+    <vs-card > 
+      <datetime v-model="startdatetime" font-size="small" type="datetime" auto='true' placeholder="select a starting time"></datetime>
+    </vs-card>
+
+    <vs-card >
+      <datetime v-model="enddatetime"  font-size="small" type="datetime" auto='true' placeholder="select a ending time"></datetime>
+    </vs-card >
+  </div>
+
+
+  <div class="ConfirmButtton" style="text-align: center;padding:15px,15px">
+    <vs-button type="filled" color="primary" @click="makebooking">Confirm</vs-button>
+  </div>
+
+</div>
 </template>
 
 
@@ -80,15 +72,17 @@ export default {
 </script> 
 
 <style>
+.datetime {font-size: 15px}
 
 .vs-button {
   background-color: blue; 
   border: none;
-  color: white;
+  color: rgb(50,75,125);
   padding: 15px 32px;
   text-align: center;
   text-decoration: none;
   display:inline-flex;
   font-size: 18px;
+  
 }
 </style>

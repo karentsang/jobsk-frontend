@@ -68,17 +68,24 @@
         </swiper>
 
       <!-- <vs-button @click="popupActive=true" color="danger" type="border">booking</vs-button> -->
-      <vs-popup fullscreen title="fullscreen" :active.sync="popupActive">
+      <vs-popup  title="Date Booking" :active.sync="popupActive">
         <vs-card>
         <datetime v-model="startdatetime" type="datetime" :auto='true' placeholder="select a starting time"></datetime>
         </vs-card>
         <vs-card>
         <datetime v-model="enddatetime" type="datetime" :auto='true' placeholder="select a ending time"></datetime>
       </vs-card>
+      <vs-button
+              @click="createBooking()"
+              color="danger"
+              type="gradient"
+              class="button"
+              style="text-align: center"
+            >Confirm</vs-button>
         
-          <div class="ConfirmButtton" style="text-align: center;">
+          <!--div class="ConfirmButtton" style="text-align: center">
           <vs-button type="filled" color="primary" @click="createBooking">Confirm</vs-button>
-          </div>
+          </div-->
       </vs-popup>
   </div>
 </template>
@@ -87,6 +94,7 @@
 
 import axios from 'axios'
 import list from '@/List/List.vue'
+import datetime from'@/Profile/components/MyCalendar.vue'
 
 export default {
   name: 'googlemap',
@@ -102,6 +110,7 @@ export default {
        startdatetime:'',
        enddatetime:'',
        popupActive:false,
+         bookingConfirmed: false,
           selectedCar: false,
           latlong: {lat: '', long: ''},
           // markersPosition: [],
@@ -154,6 +163,7 @@ export default {
           })
           .then(response => {
             console.log(response)
+            this.popupActive=false
 
             this.$router.push({ path: '/confirmation/pending', query: { bookingId: response.data.id} })
           })
@@ -229,4 +239,14 @@ export default {
 .swiper-slide {
     width: 250px;
   }
+
+  .vs-popup{
+  width: 90%;
+  height: 40%;
+  text-align: center;
+  font-size:16px;
+  border-radius: 6px;
+  padding: 10px;
+  margin:10px 10px; 
+}
 </style>
