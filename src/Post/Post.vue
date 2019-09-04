@@ -1,8 +1,8 @@
 <template>
   <div>
     <inputP :inputForm.sync="inputForm"/>
-    <googlemapP/>
-        <div class='postbutton' style="width:83%; margin: auto; margin-top: 10px; text-align: center;">
+    <googlemapP :inputForm.sync="inputForm"/>
+      <div class='postbutton' style="width:83%; margin: auto; margin-top: 10px; text-align: center;">
         <vs-button @click="openPostCompleted()" color="danger" type="border" style="width: 80%; height:40px; margin-bottom: 15px; justify-content: center;">Post it</vs-button>
     </div>
     <!-- <postbutton/> -->
@@ -12,7 +12,7 @@
 <script>
 import inputP from '@/Post/components/input.vue'
 import googlemapP from '@/Post/components/map.vue'
-import postbutton from '@/Post/components/postbutton.vue'
+// import postbutton from '@/Post/components/postbutton.vue'
 import axios from 'axios'
 
 
@@ -22,18 +22,27 @@ export default {
   components:{
       googlemapP,
       inputP,
-      postbutton,
   },
   data() {
     return {
       inputForm: {
-        speciality: null
+        category: null,
+        price: null,
+        post_img: null,
+        lat: null,
+        lng: null,
+        user_id: null,
       }
+
     }
   },
   methods: {
-    openPostCompleted(){
-      console.log(this.inputForm)
+    async openPostCompleted(){
+      console.log("openpost", this.inputForm, this.inputGoogle)
+      let data = this.inputForm
+      let result = await axios.post(`http://127.0.0.1:3333/post/${this.inputForm.type}/create`, data)
+      console.log(result)
+      // return result
       // if(this.inputForm.type && this.inputForm.title) {
       //   this.$vs.notify()
       // } else {
@@ -50,55 +59,16 @@ export default {
         })
     },
     acceptAlert(){
-
-        // return to homepage
+      this.$router.push({name:"homepage"});
     },
-  }
-  // data() {
-  //   return {
-  //     posts: []
-  //   }
-  // },
-  // methods: {
-  //   handleData(posts) {
-  //     // console.log(markers)
-  //     this.posts = posts
-  //   }
-  // }
-  // async mounted() {
-  //     // console.log(this.$route)
-  //   if(this.$route.query.type=='Offering') {
-  //     let response = await axios.post("http://127.0.0.1:3333/post/Offering/create")
-  //     console.log(response)    
-  //     // this.posts = response.data.map(map => {
-  //     //     // return {
-  //     //     //     id: map.id,
-  //     //     //     type: map.type,
-  //     //     //     price: map.price,
-  //     //     //     category: map.category,
-  //     //     //     lat: parseFloat(map.lat),
-  //     //     //     lng: parseFloat(map.lng),
-  //     //     //     image: map.post_img,
-  //     //     // }
-  //     // })
-  //   } 
-  //   // else {
-  //   //   let response = await axios.post("http://127.0.0.1:3333/post/Providing/create")
-  //   //   console.log(response)    
+  },
+  mounted() {
+    console.log(localStorage.getItem("userId"))
 
-  //     // this.posts= response.data.map(map => {
-  //     //     return {
-  //     //         id: map.id,
-  //     //         type: map.type,
-  //     //         price: map.price,
-  //     //         category: map.category,
-  //     //         lat: parseFloat(map.lat),
-  //     //         lng: parseFloat(map.lng),
-  //     //         image: map.post_img,
-  //     //     }
-  //     // })
-  //   // }
-  // }
+    this.inputForm.user_id = localStorage.getItem("userId")
+    console.log(this.inputForm.user_id)
+
+  }
 }
 </script>
 

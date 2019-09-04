@@ -40,6 +40,7 @@ export default {
   components:{
 
   },
+  props: ['inputForm'],
 
     data(){
         return {
@@ -58,7 +59,13 @@ export default {
 
      methods: {
         onDragEnd(position) {
+            
             this.currentposition = {"lat": position.latLng.lat(), "lng": position.latLng.lng()}
+            // this.inputForm = {...this.inputForm, ...this.currentposition}
+            this.inputForm.lat = this.currentposition.lat
+            this.inputForm.lng = this.currentposition.lng
+                        console.log("ondeagend", this.inputForm)
+
             this.geocodedAddress()
 
         },

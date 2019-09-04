@@ -179,12 +179,12 @@ export default {
 
         this.icon[this.$refs.mySwiper.swiper.realIndex] = "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
           
-        //   let marker = new google.maps.Marker({
-        //     position: {lat: currentMarker.lat, lng: currentMarker.lng },
-        //     icon: {
-        //       url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
-        //     }
-        //   });
+          let marker = new google.maps.Marker({
+            position: {lat: currentMarker.lat, lng: currentMarker.lng },
+            icon: {
+              url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+            }
+          });
         },
         toggleInfoWindow: function (marker, idx) {
 
