@@ -1,31 +1,31 @@
 <template>
     <div>
 
-            <vs-collapse-item>
+            <vs-collapse-item v-for="post in posts">
                 <div slot="header" style="border-bottom: inset; display: flex; background-color: rgba(255,126,103,0.75); border-radius: 9px ">
                     <img style="width: 30%; height:30%; display: flex; padding: 9px;" src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"/>
-                    <div style="width: 70%; display: flex; padding: 9px; flex-wrap: wrap; font-family: 'Pavanam', sans-serif;">
-                        <p style="width: 100%; margin: 1px">Name: demanding</P>
+                    <div v-for="booking in post[0].booking" style="width: 70%; display: flex; padding: 9px; flex-wrap: wrap; font-family: 'Pavanam', sans-serif;">
+                        <p style="width: 100%; margin: 1px">Name: {{booking.id}}</P>
+                        <p  >{{booking}}</p>
                         <p style="width: 100%; margin: 1px">Speciality: {{speciality}}</P>
                         <p style="width: 100%; margin: 1px">Price: {{price}}</P>
                     </div>
                 </div>
                 <p style="width: 100%; margin: 1px; margin-left: 10px">Location: {{location}}</P>
                 <acceptrejectcard/>
-
             </vs-collapse-item>
-            <p>{{bookingParents}}</p>
-            <vs-collapse-item>
+
+            <vs-collapse-item v-for="bookingParent in bookingParents">
                 <div slot="header" style="border-bottom: inset; display: flex; background-color: rgba(7,104,159,0.75); border-radius: 9px ">
-                    <img style="width: 30%; height:30%; display: flex; padding: 9px;" :src="bookingParents.post_img"/>
+                    <img style="width: 30%; height:30%; display: flex; padding: 9px;" :src="bookingParent.post_img"/>
                     <div style="width: 70%; display: flex; padding: 9px; flex-wrap: wrap; font-family: 'Pavanam', sans-serif;">
-                        <p style="width: 100%; margin: 1px">Name: {{bookingParents.type}}</P>
-                        <p style="width: 100%; margin: 1px">Speciality: {{bookingParents.category}}</P>
-                        <p style="width: 100%; margin: 1px">Price: {{bookingParents.price}}</P>
+                        <p style="width: 100%; margin: 1px">Name: {{bookingParent.type}}</P>
+                        <p style="width: 100%; margin: 1px">Speciality: {{bookingParent.category}}</P>
+                        <p style="width: 100%; margin: 1px">Price: {{bookingParent.price}}</P>
                     </div>
                 </div>
-                <p style="width: 100%; margin: 1px; margin-left: 10px">Status: {{status}}</P>
-                <p style="width: 100%; margin: 1px; margin-left: 10px">Location: {{location}}</P>
+                <p style="width: 100%; margin: 1px; margin-left: 10px">Status: {{bookingParent.booking.status}}</P>
+                <p style="width: 100%; margin: 1px; margin-left: 10px">Start date: {{bookingParent.booking.start_date}}</P>
             </vs-collapse-item>
 
     </div>
@@ -56,20 +56,32 @@ export default {
     },
     methods: {
         postByUser() {
-            return axios.get(`http://127.0.0.1:3333/user/${this.userId}/post`)
+            return axios.get(`http://127.0.0.1:3333/user/3/post`)
+        },
+
+        postChild(pid) {
+            return axios.get(`http://127.0.0.1:3333/allBooking/${pid}`)
         },
 
         bookingByUser() {
-            return axios.get(`http://127.0.0.1:3333/user/3/bookingPending`)
+            return axios.get(`http://127.0.0.1:3333/user/${this.userId}/bookingPending`)
         },
 
         bookingParent(pid) {
-            return axios.get(`http://127.0.0.1:3333/onePost/${pid}/`)
+            return axios.get(`http://127.0.0.1:3333/onePost/${pid}`)
         },
 
         async getPost() {
-            let posts = await this.postByUser()
-            this.posts = posts
+            let response = await this.postByUser()
+            let post = response.data
+            for (let i = 0; i < post.length; i++) {
+                let pid = post[i].id
+                let childResponse = await this.postChild(1)
+                let child = childResponse.data
+                post[i]['booking'] = child
+                console.log(post[i])
+                this.posts.push(post)
+            }
 
         },
 
@@ -79,23 +91,19 @@ export default {
             for (let i = 0; i < bookings.length; i++) {
                 // this.test = bookings[i]
                 let pid = bookings[i].post_id
-                let bookingParent = await this.bookingParent(pid)
+                let parentResponse = await this.bookingParent(pid)
+                let bookingParent = parentResponse.data
+
                 bookingParent['booking'] = bookings[i]
-                console.log(bookingParent)
                 this.bookingParents.push(bookingParent)
-                //check if bookingparent is in parent array
-                // if (parents.includes(bookingParent)) {
-                //     //extract the parent and add the booking to the parent
-                // }
-                // else {
-                //     parents.push(bookingParent)
-                // }
+                // console.log(this.bookingParents)           
             } 
         }
     },
     mounted() {
         this.userId = localStorage.getItem('userId')
         this.getBooking()
+        this.getPost()
     }
 
 }
