@@ -48,8 +48,20 @@ export default {
             speciality:'123123',
             price:'123',
             location: '123',
-            status:'pending'
+            status:'pending',
+            userId: null
         }
+    },
+    methods: {
+        post() {
+            return axios.get(`http://127.0.0.1:3333/user/${this.userId}/post`)
+        },
+        async getPost() {
+            let posts = await this.post()
+        }
+    },
+    mounted() {
+        this.userId = localStorage.getItem('userId')
     }
 
 }
