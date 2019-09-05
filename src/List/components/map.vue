@@ -141,6 +141,8 @@ export default {
 
     methods: {
       goToPage(id, type) {
+        this.activeMarker = this.markers.filter(item => item.id == id)[0]
+       
         // console.log("go")
         // this.$router.push({ path: 'register', query: { id: id, type: type } })
         this.popupActive=true
@@ -153,6 +155,10 @@ export default {
         console.log(selectedPost)
         console.log(this.startdatetime)
         console.log(this.enddatetime)
+        let price = this.activeMarker.price
+        let speciality=this.activeMarker.category
+        console.log("price", this.activeMarker.price)
+        console.log("speciality",this.activeMarker.category)
         this.popupActive=false
 
         axios
@@ -160,13 +166,17 @@ export default {
             start_date: this.startdatetime,
             end_date: this.enddatetime,
             user_id: 1, // Todo: testing only
+            price: price,
+            category:speciality,
+            post_img:this.post_img
           })
           .then(response => {
             console.log(response)
             this.popupActive=false
 
-            this.$router.push({ path: '/confirmation/pending', query: { startdatetime: this.startdatetime, enddatetime:this.enddatetime } })
-          })
+            this.$router.push({ path: '/confirmation/pending', query: { startdatetime: this.startdatetime, enddatetime:this.enddatetime,name: this.name, marker: this.markers, price,speciality } })
+            //this.$router.push({ path: '/confirmation/pending', query: { name: this.name, location:this.location,spciality:this.speciality,price:this.price,district:this.district,availablity:this.availablity} })
+         })
 
       },
       handleSlideChange() {
@@ -179,21 +189,18 @@ export default {
 
         this.icon[this.$refs.mySwiper.swiper.realIndex] = "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
           
-<<<<<<< HEAD
         //   let marker = new google.maps.Marker({
         //     position: {lat: currentMarker.lat, lng: currentMarker.lng },
         //     icon: {
         //       url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
         //     }
         //   });
-=======
           let marker = new google.maps.Marker({
             position: {lat: currentMarker.lat, lng: currentMarker.lng },
             icon: {
               url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
             }
           });
->>>>>>> fe7f391a79d4453966dcb4fb25af2aa857c0e429
         },
         toggleInfoWindow: function (marker, idx) {
 
@@ -248,8 +255,6 @@ export default {
 .swiper-slide {
     width: 250px;
   }
-<<<<<<< HEAD
-=======
   .card-content{
     margin-left: 36px;
     align-self: center;
@@ -258,7 +263,6 @@ export default {
   .vs-card--content {
    margin-bottom: 0 !important;
   }
->>>>>>> fe7f391a79d4453966dcb4fb25af2aa857c0e429
 
   .vs-popup{
   width: 90%;

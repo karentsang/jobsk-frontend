@@ -7,6 +7,7 @@
             <vs-icon icon="send" size="small" color="orange"></vs-icon>
             <vs-card><p>Request Sent!<br>Waiting for the confirmation<br>
             <p>Your booking Information:</p>
+          
             <p>{{startdatetime}}</P>
             <p>{{enddatetime}}</P>
             </p>       
@@ -19,8 +20,8 @@
     <vs-col type="flex" vs-justify="center" vs-align="center" vs-w="9">
       <vs-card class="cardx">
         <div slot="header">
-          <p>{{name}}</p> 
-          <p>{{Location}}</p>
+          <p>{{id}}</p> 
+          <p>{{location}}</p>
           
         </div>
         <div slot="media">
@@ -28,10 +29,10 @@
         </div>
         <div>
           <span>
-      <p>Speciality: {{Speciality}}</p> 
-      <p>Price:{{Price}}</p> 
-      <p>District:{{District}}</p> 
-      <p>Availablity:{{Availablity}}</p> 
+      <p>Speciality: {{speciality}}</p> 
+      <p>Price:{{price}}</p> 
+      <p>District:{{district}}</p> 
+    
           </span>
         </div>
         <div slot="footer">
@@ -74,13 +75,13 @@ export default {
   },  
     data() {
     return{
-        status:null ,
-        name: null,
-        Location:null,
-        Speciality:null,
-        Price:null,
-        District:null,
-        Availablity:null,
+        status:"" ,
+        name: "",
+        location:null,
+        speciality:null,
+        price:null,
+        district:null,
+       
         popupActivo1:false,
         startdatetime:null,
         enddatetime: null
@@ -90,6 +91,12 @@ export default {
       console.log(this.$route.query)
       this.startdatetime =this.$route.query.startdatetime
       this.enddatetime =this.$route.query.enddatetime
+      this.name=this.$route.query.name
+      this.speciality=this.$route.query.speciality
+      this.price=this.$route.query.price
+      this.district=this.$route.query.district
+     
+      // this.name = "asds"
     },
      methods:{
       openLoading(){
