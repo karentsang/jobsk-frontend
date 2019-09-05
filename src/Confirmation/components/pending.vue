@@ -105,10 +105,10 @@ export default {
       // this.district=this.$route.query.district
       this.postid = this.$route.query.postid
       console.log('in here',this.postid)
-      axios.get(`http://127.0.0.1:3333/getUserFromPost/${this.postid}`)
+      axios.get(`/getUserFromPost/${this.postid}`)
       .then(response => {
         let id = response.data
-        axios.get(`http://127.0.0.1:3333/user/${id}`)
+        axios.get(`/user/${id}`)
         .then(response => {
           this.userInfo = response.data
           console.log(this.userInfo)

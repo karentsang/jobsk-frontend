@@ -35,7 +35,7 @@
             label-idle="Drop files here..."
             allow-multiple="false"
             accepted-file-types="image/jpeg, image/png"
-            server="/upload"
+            server="https://trava-backend.whiteboard.academy/upload"
             v-bind:files="file"
             :onprocessfile="upload"
 
@@ -181,6 +181,8 @@ export default {
         },
 
         upload(err, file){
+            console.log(file)
+            // console.log(image)
             let image = JSON.parse(file.serverId)
             console.log(image)
             this.inputForm.post_img = image.url
