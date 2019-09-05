@@ -52,7 +52,7 @@ export default {
       async getCat(category) {
           // Call api and return data via emit
         let path =this.$route.query.type
-        let response = await axios.get(`http://127.0.0.1:3333/post/${path}/${category}`)
+        let response = await axios.get(`/post/${path}/${category}`)
         console.log(response)
         
         let markers = response.data.map(map => {

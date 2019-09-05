@@ -5,11 +5,8 @@
         <div style="width: 60%; display: flex; padding: 13px; flex-wrap: wrap; font-family: 'Pavanam', sans-serif;">
             <p style="width: 100%; margin: 1px">User: {{user.firstname}}</P>
             <p style="width: 100%; margin: 1px">Email: {{user.email}}</P>
-<<<<<<< HEAD
-=======
             <p style="width: 100%; margin: 1px">Start: {{booking.start_date | date('DD MMMM HH:MM')}}</P>
             <p style="width: 100%; margin: 1px">End: {{booking.start_date| date('DD MMMM HH:MM')}}</P>
->>>>>>> 8cde844656ba552bdb4841c1f697318d414a9bce
         </div>
         <div style="margin-top: 3px; display: flex; flex-direction: column;">
             <vs-button @click="openAlert1" icon-no-border icon="done" color='#07689F' :type="acceptbutton"></vs-button>
@@ -54,7 +51,7 @@ export default {
         },
         user() {
             console.log("booking", this.booking)
-       axios.get(`http://127.0.0.1:3333/user/${this.user_id}`).then(response => {
+       axios.get(`/user/${this.user_id}`).then(response => {
             return response.data
         })
         }
@@ -89,7 +86,7 @@ export default {
     },
     mounted() {
         console.log("mounted", this.user_id, this.booking)
-        axios.get(`http://127.0.0.1:3333/user/${this.booking.user_id}`).then(response => {
+        axios.get(`/user/${this.booking.user_id}`).then(response => {
             this.user = response.data
         })
     }

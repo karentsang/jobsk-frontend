@@ -51,7 +51,7 @@ export default {
     console.log("mounted")
       // console.log(this.$route)
       if(this.$route.query.type=='Offering') {
-        let response = await axios.get("http://127.0.0.1:3333/post/Offering")
+        let response = await axios.get("/post/Offering")
             
         this.markers = response.data.map(map => {
             return {
@@ -65,7 +65,7 @@ export default {
             }
         })
       } else {
-        let response = await axios.get("http://127.0.0.1:3333/post/Providing")
+        let response = await axios.get("/post/Providing")
         this.markers = response.data.map(map => {
             return {
                 id: map.id,

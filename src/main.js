@@ -20,7 +20,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faSearch,faMagic, faDollarSign, faBullhorn, faCamera, faPencilRuler, faMusic, faPalette, faChild, faGem } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-
+axios.defaults.baseURL = 'https://jobsk.whiteboard.academy'
 
 Vue.use(VueAxios, axios)
 Vue.use(VueGoogleMaps, {

@@ -114,7 +114,7 @@ export default {
     },
 
     post() {
-        return axios.post("http://127.0.0.1:3333/login", {
+        return axios.post("/login", {
           email: this.email,
           password: this.password
         });
@@ -150,7 +150,7 @@ export default {
       let uid = googleUser.getBasicProfile().getId()
       let firstname = googleUser.getBasicProfile().getName()
       let img = googleUser.getBasicProfile().getImageUrl()
-      let response = await axios.post("http://127.0.0.1:3333/oauth",{
+      let response = await axios.post("/oauth",{
         email: this.email,
         uid: uid,
         firstname: firstname,

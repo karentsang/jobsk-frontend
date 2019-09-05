@@ -162,7 +162,7 @@ export default {
         this.popupActive=false
 
         axios
-          .post('http://127.0.0.1:3333/post/' + selectedPost.id + '/booking/create', {
+          .post('/post/' + selectedPost.id + '/booking/create', {
             start_date: this.startdatetime,
             end_date: this.enddatetime,
             user_id: 1, // Todo: testing only

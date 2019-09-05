@@ -35,7 +35,7 @@
             label-idle="Drop files here..."
             allow-multiple="false"
             accepted-file-types="image/jpeg, image/png"
-            server="http://localhost:3333/upload"
+            server="/upload"
             v-bind:files="file"
             :onprocessfile="upload"
 

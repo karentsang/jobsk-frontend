@@ -70,19 +70,19 @@ export default {
 console.log(this.posts[index][0].booking)
         },
         postByUser() {
-            return axios.get(`http://127.0.0.1:3333/user/${this.userId}/post`)
+            return axios.get(`/user/${this.userId}/post`)
         },
 
         postChild(pid) {
-            return axios.get(`http://127.0.0.1:3333/allBooking/${pid}`)
+            return axios.get(`/allBooking/${pid}`)
         },
 
         bookingByUser() {
-            return axios.get(`http://127.0.0.1:3333/user/${this.userId}/bookingPending`)
+            return axios.get(`/user/${this.userId}/bookingPending`)
         },
 
         bookingParent(pid) {
-            return axios.get(`http://127.0.0.1:3333/onePost/${pid}`)
+            return axios.get(`/onePost/${pid}`)
         },
 
         async getPost() {

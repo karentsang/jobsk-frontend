@@ -45,7 +45,7 @@ export default {
     async openPostCompleted(){
       console.log("openpost", this.inputForm, this.inputGoogle)
       let data = this.inputForm
-      let result = await axios.post(`http://127.0.0.1:3333/post/${this.inputForm.type}/create`, data)
+      let result = await axios.post(`/post/${this.inputForm.type}/create`, data)
       console.log(result)
       // return result
       // if(this.inputForm.type && this.inputForm.title) {
