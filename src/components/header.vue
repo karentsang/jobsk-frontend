@@ -2,7 +2,7 @@
     <div class="header" style="width: 100%; display: flex; background-color: rgb(50,75,125); height: 83px">
 
         <div ref="parentSidebar" id="parentx" style="width: 20%; display: flex; place-content: center; ">
-
+            
             <vs-button v-show="isExistingUser" @click="active=!active"  icon-no-border icon="account_circle" color="black" type="flat" style="align-self: center; padding:0px; color: white;"></vs-button>
             <div v-if="!isExistingUser" style="width: 20%;" ></div>
             <vs-sidebar default-index="1"  color="danger" class="sidebarx" spacer v-model="active">
@@ -16,7 +16,7 @@
 
                 </div>
 
-                <vs-sidebar-item color="#07689F" index="1" icon="account_box">
+                <vs-sidebar-item @click="logout" color="#07689F" index="1" icon="account_box">
                     <router-link to="/">
                         Home
                     </router-link>
