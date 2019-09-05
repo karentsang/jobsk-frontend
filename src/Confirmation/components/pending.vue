@@ -6,6 +6,7 @@
         <div style="display: flex;blackground-color:yellow;margin:25px;padding:auto">
             <vs-icon icon="send" size="small" color="orange"></vs-icon>
             <vs-card><p>Request Sent!<br>Waiting for the confirmation<br>
+            <p>Your booking Information:</p>
             <p>{{startdatetime}}</P>
             <p>{{enddatetime}}</P>
             </p>       
@@ -86,7 +87,9 @@ export default {
     }
     } ,
     mounted() {
-
+      console.log(this.$route.query)
+      this.startdatetime =this.$route.query.startdatetime
+      this.enddatetime =this.$route.query.enddatetime
     },
      methods:{
       openLoading(){
@@ -95,7 +98,22 @@ export default {
           this.$vs.loading.close()
         }, 2000);
     },
+    
+    bookingInfo(){
+    //  axios
+    //       .post('http://127.0.0.1:3333/post/' + selectedPost.id + '/booking/create', {
+    //         start_date: this.startdatetime,
+    //         end_date: this.enddatetime,
+    //         user_id: 1, // Todo: testing only
+    //       })
+    //       .then(response => {
+    //         console.log(response)
+    //         this.$route.query.bookingId
+
+    //         this.$router.push({ path: '/confirmation/pending', query: { startdatetime: this.startdatetime, enddatetime:this.enddatetime } })
+    //       })
   },
+  }
 
  
     
