@@ -56,7 +56,7 @@ export default {
     },
     methods: {
         postByUser() {
-            return axios.get(`http://127.0.0.1:3333/user/3/post`)
+            return axios.get(`http://127.0.0.1:3333/user/${this.userId}/post`)
         },
 
         postChild(pid) {
