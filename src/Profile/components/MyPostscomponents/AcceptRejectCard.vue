@@ -5,8 +5,13 @@
         <div style="width: 60%; display: flex; padding: 13px; flex-wrap: wrap; font-family: 'Pavanam', sans-serif;">
             <p style="width: 100%; margin: 1px">User: {{user.firstname}}</P>
             <p style="width: 100%; margin: 1px">Email: {{user.email}}</P>
+<<<<<<< HEAD
+=======
+            <p style="width: 100%; margin: 1px">Start: {{booking.start_date | date('DD MMMM HH:MM')}}</P>
+            <p style="width: 100%; margin: 1px">End: {{booking.start_date| date('DD MMMM HH:MM')}}</P>
+>>>>>>> 8cde844656ba552bdb4841c1f697318d414a9bce
         </div>
-        <div style="margin-top: 3px">
+        <div style="margin-top: 3px; display: flex; flex-direction: column;">
             <vs-button @click="openAlert1" icon-no-border icon="done" color='#07689F' :type="acceptbutton"></vs-button>
             <vs-button @click="openAlert2" icon-no-border icon="clear" color='#ff7e67' :type="rejectbutton"></vs-button>
         </div>

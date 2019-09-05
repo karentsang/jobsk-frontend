@@ -3,8 +3,6 @@
     <jobfilter @changeFilter="handleData"/>
     <googlemap :markers="markers"/>
     </div>
-
-  </div>
 </template>
 
 <script>

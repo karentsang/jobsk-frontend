@@ -141,6 +141,8 @@ export default {
 
     methods: {
       goToPage(id, type) {
+        this.activeMarker = this.markers.filter(item => item.id == id)[0]
+       
         // console.log("go")
         // this.$router.push({ path: 'register', query: { id: id, type: type } })
         this.popupActive=true
@@ -153,6 +155,10 @@ export default {
         console.log(selectedPost)
         console.log(this.startdatetime)
         console.log(this.enddatetime)
+        let price = this.activeMarker.price
+        let speciality=this.activeMarker.category
+        console.log("price", this.activeMarker.price)
+        console.log("speciality",this.activeMarker.category)
         this.popupActive=false
 
         axios
@@ -160,13 +166,17 @@ export default {
             start_date: this.startdatetime,
             end_date: this.enddatetime,
             user_id: 1, // Todo: testing only
+            price: price,
+            category:speciality,
+            post_img:this.post_img
           })
           .then(response => {
             console.log(response)
             this.popupActive=false
 
-            this.$router.push({ path: '/confirmation/pending', query: { startdatetime: this.startdatetime, enddatetime:this.enddatetime } })
-          })
+            this.$router.push({ path: '/confirmation/pending', query: { startdatetime: this.startdatetime, enddatetime:this.enddatetime,name: this.name, marker: this.markers, price,speciality } })
+            //this.$router.push({ path: '/confirmation/pending', query: { name: this.name, location:this.location,spciality:this.speciality,price:this.price,district:this.district,availablity:this.availablity} })
+         })
 
       },
       handleSlideChange() {
