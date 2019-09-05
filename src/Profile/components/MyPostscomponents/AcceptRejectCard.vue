@@ -1,13 +1,10 @@
 <template>
   <div>
-
     <div class="acceptrejectcard" style=" display: flex;">
         <img style="width: 30%; display: flex; padding: 13px;" :src="user.profile_img"/>
         <div style="width: 60%; display: flex; padding: 13px; flex-wrap: wrap; font-family: 'Pavanam', sans-serif;">
             <p style="width: 100%; margin: 1px">User: {{user.firstname}}</P>
             <p style="width: 100%; margin: 1px">Email: {{user.email}}</P>
-            <p style="width: 100%; margin: 1px">Start Date: {{booking.start_date}}</P>
-            <p style="width: 100%; margin: 1px">End Date: {{booking.start_date}}</P>
         </div>
         <div style="margin-top: 3px">
             <vs-button @click="openAlert1" icon-no-border icon="done" color='#07689F' :type="acceptbutton"></vs-button>
@@ -30,7 +27,10 @@ export default {
     
     name: 'acceptrejectcard',
     props: {    
-        booking: {}
+        booking: {},
+        isConfirmed: true,
+        user_id: ""
+
     },
     data() {
         return {
@@ -46,6 +46,12 @@ export default {
     computed: {
         userId(id) {
             return id
+        },
+        user() {
+            console.log("booking", this.booking)
+       axios.get(`http://127.0.0.1:3333/user/${this.user_id}`).then(response => {
+            return response.data
+        })
         }
     },
 
@@ -59,7 +65,9 @@ export default {
             })
         },
         acceptAlert1(){
-            //direct to the matching/confirm page
+            console.log("inside acceptAlert1")
+            this.$emit("isconfirmed")
+            // this.isConfirmed = false
         },
         openAlert2(){
         this.$vs.dialog({
@@ -70,10 +78,12 @@ export default {
             })
         },
         acceptAlert2(){
+
             //that propose post is removed
         },
     },
     mounted() {
+        console.log("mounted", this.user_id, this.booking)
         axios.get(`http://127.0.0.1:3333/user/${this.booking.user_id}`).then(response => {
             this.user = response.data
         })

@@ -8,11 +8,11 @@
                         <p style="width: 100%; margin: 1px">Type: {{post[0].type}}</P>
                         <p style="width: 100%; margin: 1px">Category: {{post[0].category}}</P>
                         <p style="width: 100%; margin: 1px">Price: {{post[0].price}}</P>
+                        <p v-show="!isConfirmed" style="width: 100%; margin: 1px;">Status: Confirmed</P>
                     </div>
                 </div>
                 <p style="width: 100%; margin: 1px; margin-left: 10px">Location: {{location}}</P>
-                <p style="width: 100%; margin: 1px; margin-left: 10px">Status: Confirmed</P>
-                <acceptrejectcard v-for="(booking, index) in post[0].booking" :key="index" :booking="booking"/>
+                <acceptrejectcard v-on:isconfirmed="confirmation(index, subIndex)" v-for="(booking, subIndex) in post[0].booking" :key="'sub_' +index" :booking="booking" :user_id="booking.user_id"/>
             </vs-collapse-item>
 
             <vs-collapse-item v-for="(bookingParent,index) in bookingParents" :key="index" >
@@ -52,10 +52,18 @@ export default {
             price:'123',
             location: '123',
             status:'pending',
-            userId: null
+            userId: null,
+            isConfirmed: true,
         }
     },
     methods: {
+        confirmation(index, subIndex){
+            this.isConfirmed = false
+            // console.log("this post",index, subIndex, this.posts[index][0], this.posts[index][0].booking)
+            // this.posts[index][0].booking = this.posts[index][0].booking.slice(subIndex, subIndex + 1)
+            this.$set( this.posts[index][0], "booking", this.posts[index][0].booking.slice(subIndex, subIndex + 1))
+console.log(this.posts[index][0].booking)
+        },
         postByUser() {
             return axios.get(`http://127.0.0.1:3333/user/${this.userId}/post`)
         },
