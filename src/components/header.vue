@@ -82,6 +82,7 @@ export default {
             document.location.href="/"
         },
         gopost(){
+            this.active = false
             this.$router.push({name: 'mypost' })
         }
     },
