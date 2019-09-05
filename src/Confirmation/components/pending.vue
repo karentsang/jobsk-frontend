@@ -8,8 +8,8 @@
             <vs-card><p>Request Sent!<br>Waiting for the confirmation<br>
             <p>Your booking Information:</p>
           
-            <p>{{startdatetime}}</P>
-            <p>{{enddatetime}}</P>
+            <p>{{startdatetime| date('DD MMMM HH:MM')}}</P>
+            <p>{{enddatetime| date('DD MMMM HH:MM')}}</P>
             </p>       
             </vs-card>
         </div>
@@ -67,9 +67,12 @@
 
 <script>
 import datetime from'@/Profile/components/MyCalendar.vue'
-
+import { dateFilter } from "vue-date-fns"
 
 export default {
+  filters: {
+        date: dateFilter
+    },
   props: {
     bookingInfo: Object
   },  
