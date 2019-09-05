@@ -25,20 +25,21 @@
           
         </div>
         <div slot="media">
-          <img class="full-width-image" :src="`https://picsum.photos/400/400?image=1`" alt="">
+          <img class="full-width-image" :src="userInfo.profile_img" alt="">
         </div>
         <div>
           <span>
       <p>Speciality: {{speciality}}</p> 
-      <p>Price:{{price}}</p> 
-      <p>District:{{district}}</p> 
+      <p>Price: {{price}} </p> 
+      <p>Name:{{userInfo.firstname}}</p>
+      <p>Email:{{userInfo.email}}</p>
     
           </span>
         </div>
         <div slot="footer">
           <vs-row vs-justify="flex-end">
               <vs-button @click="put" color="danger" type="gradient" class="button"
-            ><router-link to="/profile/mypost">More Posts</router-link></vs-button>
+            ><router-link style="color: white" to="/profile/mypost">More Posts</router-link></vs-button>
 
           </vs-row>
         </div>
@@ -68,6 +69,7 @@
 <script>
 import datetime from'@/Profile/components/MyCalendar.vue'
 import { dateFilter } from "vue-date-fns"
+import axios from 'axios'
 
 export default {
   filters: {
@@ -87,17 +89,31 @@ export default {
        
         popupActivo1:false,
         startdatetime:null,
-        enddatetime: null
+        enddatetime: null,
+        postid: null,
+        userInfo: {},
+
     }
     } ,
     mounted() {
-      console.log(this.$route.query)
+      // console.log(this.$route.query)
       this.startdatetime =this.$route.query.startdatetime
       this.enddatetime =this.$route.query.enddatetime
-      this.name=this.$route.query.name
+      // this.name=this.$route.query.name
       this.speciality=this.$route.query.speciality
       this.price=this.$route.query.price
-      this.district=this.$route.query.district
+      // this.district=this.$route.query.district
+      this.postid = this.$route.query.postid
+      console.log('in here',this.postid)
+      axios.get(`http://127.0.0.1:3333/getUserFromPost/${this.postid}`)
+      .then(response => {
+        let id = response.data
+        axios.get(`http://127.0.0.1:3333/user/${id}`)
+        .then(response => {
+          this.userInfo = response.data
+          console.log(this.userInfo)
+        })
+      })
      
       // this.name = "asds"
     },
@@ -109,24 +125,21 @@ export default {
         }, 2000);
     },
     
-    bookingInfo(){
-    //  axios
-    //       .post('http://127.0.0.1:3333/post/' + selectedPost.id + '/booking/create', {
-    //         start_date: this.startdatetime,
-    //         end_date: this.enddatetime,
-    //         user_id: 1, // Todo: testing only
-    //       })
-    //       .then(response => {
-    //         console.log(response)
-    //         this.$route.query.bookingId
+      bookingInfo(){
+      //  axios
+      //       .post('http://127.0.0.1:3333/post/' + selectedPost.id + '/booking/create', {
+      //         start_date: this.startdatetime,
+      //         end_date: this.enddatetime,
+      //         user_id: 1, // Todo: testing only
+      //       })
+      //       .then(response => {
+      //         console.log(response)
+      //         this.$route.query.bookingId
 
-    //         this.$router.push({ path: '/confirmation/pending', query: { startdatetime: this.startdatetime, enddatetime:this.enddatetime } })
-    //       })
-  },
-  }
-
- 
-    
+      //         this.$router.push({ path: '/confirmation/pending', query: { startdatetime: this.startdatetime, enddatetime:this.enddatetime } })
+      //       })
+    },
+  } 
     
 }
 

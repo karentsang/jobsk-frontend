@@ -107,6 +107,7 @@ export default {
 
     data(){
         return {
+          selectedPostId: {},
        startdatetime:'',
        enddatetime:'',
        popupActive:false,
@@ -151,14 +152,15 @@ export default {
 
       createBooking() {
         let selectedPost = this.markers[this.$refs.mySwiper.swiper.realIndex]
+        this.selectedPostId = selectedPost.id
         // console.log("createBooking")
         console.log(selectedPost)
-        console.log(this.startdatetime)
-        console.log(this.enddatetime)
+        // console.log(this.startdatetime)
+        // console.log(this.enddatetime)
         let price = this.activeMarker.price
         let speciality=this.activeMarker.category
-        console.log("price", this.activeMarker.price)
-        console.log("speciality",this.activeMarker.category)
+        // console.log("price", this.activeMarker.price)
+        // console.log("speciality",this.activeMarker.category)
         this.popupActive=false
 
         axios
@@ -171,10 +173,10 @@ export default {
             post_img:this.post_img
           })
           .then(response => {
-            console.log(response)
+            // console.log(response)
             this.popupActive=false
 
-            this.$router.push({ path: '/confirmation/pending', query: { startdatetime: this.startdatetime, enddatetime:this.enddatetime,name: this.name, marker: this.markers, price,speciality } })
+            this.$router.push({ path: '/confirmation/pending', query: { startdatetime: this.startdatetime, enddatetime:this.enddatetime,name: this.name, marker: this.markers, postid: this.selectedPostId,price,speciality } })
             //this.$router.push({ path: '/confirmation/pending', query: { name: this.name, location:this.location,spciality:this.speciality,price:this.price,district:this.district,availablity:this.availablity} })
          })
 
