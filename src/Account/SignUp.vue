@@ -13,7 +13,7 @@
         <div>
           <div slot="extra-content" class="googleCard2">
           
-          <GoogleLogin :params="params":renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure" style="border:none"></GoogleLogin>
+          <GoogleLogin :params="params" :renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure" style="border:none"></GoogleLogin>
             
           </div>
           <div

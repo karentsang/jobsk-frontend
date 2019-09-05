@@ -107,6 +107,7 @@ export default {
 
     data(){
         return {
+          userId: null,
           selectedPostId: {},
        startdatetime:'',
        enddatetime:'',
@@ -167,7 +168,7 @@ export default {
           .post('http://127.0.0.1:3333/post/' + selectedPost.id + '/booking/create', {
             start_date: this.startdatetime,
             end_date: this.enddatetime,
-            user_id: 1, // Todo: testing only
+            user_id: this.userId, // Todo: testing only
             price: price,
             category:speciality,
             post_img:this.post_img
@@ -239,6 +240,9 @@ export default {
         //             </div>
         //           </div>`
         //         },
+    },
+    mounted() {
+      this.userId = localStorage.getItem('userId')
     }
 }
 
