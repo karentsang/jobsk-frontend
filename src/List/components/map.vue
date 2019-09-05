@@ -69,14 +69,6 @@
           <datetime v-model="startdatetime" type="datetime" :auto='true' placeholder="select a starting time"></datetime>
         </vs-card>
         <vs-card>
-<<<<<<< HEAD
-          <datetime v-model="enddatetime" type="datetime" :auto='true' placeholder="select a ending time"></datetime>
-        </vs-card>
-        
-          <div class="ConfirmButtton" style="text-align: center;">
-            <vs-button type="filled" color="primary" @click="createBooking">Confirm</vs-button>
-          </div>
-=======
         <datetime v-model="enddatetime" type="datetime" :auto='true' placeholder="select a ending time"></datetime>
       </vs-card>
       <vs-button
@@ -90,7 +82,6 @@
           <!--div class="ConfirmButtton" style="text-align: center">
           <vs-button type="filled" color="primary" @click="createBooking">Confirm</vs-button>
           </div-->
->>>>>>> 1921b1b72062c888dcd79ac5a6e6fc269da5c75a
       </vs-popup>
   </div>
 </template>
@@ -244,7 +235,6 @@ export default {
 .swiper-slide {
     width: 250px;
   }
-<<<<<<< HEAD
   .card-content{
     margin-left: 36px;
     align-self: center;
@@ -253,7 +243,6 @@ export default {
   .vs-card--content {
    margin-bottom: 0 !important;
   }
-=======
 
   .vs-popup{
   width: 90%;
@@ -264,5 +253,4 @@ export default {
   padding: 10px;
   margin:10px 10px; 
 }
->>>>>>> 1921b1b72062c888dcd79ac5a6e6fc269da5c75a
 </style>
