@@ -1,10 +1,10 @@
 <template>
     <div>
 
-            <vs-collapse-item v-for="post in posts">
+            <vs-collapse-item v-for="(post, index) in posts" :key="index">
                 <div slot="header" style="border-bottom: inset; display: flex; background-color: rgba(255,126,103,0.75); border-radius: 9px ">
                     <img style="width: 30%; height:30%; display: flex; padding: 9px;" src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"/>
-                    <div v-for="booking in post[0].booking" style="width: 70%; display: flex; padding: 9px; flex-wrap: wrap; font-family: 'Pavanam', sans-serif;">
+                    <div v-for="(booking,index) in post[0].booking" :key="index" style="width: 70%; display: flex; padding: 9px; flex-wrap: wrap; font-family: 'Pavanam', sans-serif;">
                         <p style="width: 100%; margin: 1px">Name: {{booking.id}}</P>
                         <p  >{{booking}}</p>
                         <p style="width: 100%; margin: 1px">Speciality: {{speciality}}</P>
@@ -15,7 +15,7 @@
                 <acceptrejectcard/>
             </vs-collapse-item>
 
-            <vs-collapse-item v-for="bookingParent in bookingParents">
+            <vs-collapse-item v-for="(bookingParent,index) in bookingParents" :key="index" >
                 <div slot="header" style="border-bottom: inset; display: flex; background-color: rgba(7,104,159,0.75); border-radius: 9px ">
                     <img style="width: 30%; height:30%; display: flex; padding: 9px;" :src="bookingParent.post_img"/>
                     <div style="width: 70%; display: flex; padding: 9px; flex-wrap: wrap; font-family: 'Pavanam', sans-serif;">
