@@ -29,8 +29,8 @@
                 </vs-sidebar-item>
 
                 <div class="footer-sidebar" slot="footer">
-                    <vs-button icon="reply" color="danger" type="flat"><router-link to="/">log out</router-link></vs-button>
-                    <vs-button icon="settings" color="#07689F" type="flat"></vs-button>
+                    <vs-button @click="out" icon="reply" color="danger" type="flat"><router-link to="/">log out</router-link></vs-button>
+                    <!-- <vs-button icon="settings" color="#07689F" type="flat"></vs-button> -->
                 </div>
 
             </vs-sidebar>
@@ -66,7 +66,22 @@ export default {
             this.isExistingUser = true
         }
         else {this.isExistingUser = false}    
-    }
+    },
+    methods:{
+        out(){
+            localStorage.clear("token", this.token);
+            localStorage.clear("user", this.email);
+            localStorage.clear("userId", this.userId);
+
+            this.logout()
+        },
+        
+        logout(){
+            // this.$router.reload({name:"homepage"})
+            // this.active = false
+            document.location.href="/"
+        }
+    },
 }    
 </script>
 

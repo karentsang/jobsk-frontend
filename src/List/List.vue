@@ -2,6 +2,7 @@
   <div>
     <jobfilter @changeFilter="handleData"/>
     <googlemap :markers="markers"/>
+<<<<<<< HEAD
  
     <!-- <pending  v-if="bookingConfirmed" :bookingInfo="bookingInfo"/> -->
     <!-- <pending  v-if="bookingConfirmed" :bookingInfo="bookingInfo"/>
@@ -18,6 +19,8 @@
       
   
     </vs-popup> -->
+=======
+>>>>>>> dac4eb9f2591cc6b6eb4e171a8e1c796d6d6cf51
     </div>
 
   </div>
@@ -115,5 +118,8 @@ export default {
   display:inline-flex;
   font-size: 18px;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> dac4eb9f2591cc6b6eb4e171a8e1c796d6d6cf51
 </style>
