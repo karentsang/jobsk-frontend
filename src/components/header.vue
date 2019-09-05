@@ -58,7 +58,7 @@ export default {
     data:()=>({
         active:false,
         name:localStorage.getItem("user"),
-        profileimg:"https://res.cloudinary.com/suang/image/upload/v1567592655/JOBSK/Screen_Shot_2019-09-04_at_6.23.44_PM_rqfasd.png",
+        profileimg:"https://cn.i.cdn.tides.test-ti-platform.com/cnapac/content/438/showpage/teen-titans-go%21/sa/showicon.png?w=100&h=100",
         isExistingUser: false
     }),
     mounted() {
