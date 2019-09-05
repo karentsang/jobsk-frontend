@@ -90,7 +90,7 @@ console.log(this.posts[index][0].booking)
             let post = response.data
             for (let i = 0; i < post.length; i++) {
                 let pid = post[i].id
-                let childResponse = await this.postChild(1)
+                let childResponse = await this.postChild(pid)
                 let child = childResponse.data
                 post[i]['booking'] = child
                 console.log(post[i])
