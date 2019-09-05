@@ -182,6 +182,7 @@ export default {
 
         upload(err, file){
             let image = JSON.parse(file.serverId)
+            console.log(image)
             this.inputForm.post_img = image.url
         }
     }
