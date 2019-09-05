@@ -3,16 +3,15 @@
 
             <vs-collapse-item v-for="(post, index) in posts" :key="index">
                 <div slot="header" style="border-bottom: inset; display: flex; background-color: rgba(255,126,103,0.75); border-radius: 9px ">
-                    <img style="width: 30%; height:30%; display: flex; padding: 9px;" src="https://www.generationsforpeace.org/wp-content/uploads/2018/03/empty.jpg"/>
-                    <div v-for="(booking,index) in post[0].booking" :key="index" style="width: 70%; display: flex; padding: 9px; flex-wrap: wrap; font-family: 'Pavanam', sans-serif;">
-                        <p style="width: 100%; margin: 1px">Name: {{booking.id}}</P>
-                        <p  >{{booking}}</p>
-                        <p style="width: 100%; margin: 1px">Speciality: {{speciality}}</P>
-                        <p style="width: 100%; margin: 1px">Price: {{price}}</P>
+                    <img style="width: 30%; height:30%; display: flex; padding: 9px;" :src="post[0].post_img"/>
+                    <div style="width: 70%; display: flex; padding: 9px; flex-wrap: wrap; font-family: 'Pavanam', sans-serif;">
+                        <p style="width: 100%; margin: 1px">Type: {{post[0].type}}</P>
+                        <p style="width: 100%; margin: 1px">Category: {{post[0].category}}</P>
+                        <p style="width: 100%; margin: 1px">Price: {{post[0].price}}</P>
                     </div>
                 </div>
                 <p style="width: 100%; margin: 1px; margin-left: 10px">Location: {{location}}</P>
-                <acceptrejectcard/>
+                <acceptrejectcard v-for="booking in post[0].booking" :booking="booking"/>
             </vs-collapse-item>
 
             <vs-collapse-item v-for="(bookingParent,index) in bookingParents" :key="index" >
@@ -33,6 +32,7 @@
 
 <script>
 import acceptrejectcard from '@/Profile/components/MyPostscomponents/AcceptRejectCard.vue'
+import { format, compareAsc } from 'date-fns'
 const axios = require("axios");
 
 export default {
