@@ -11,7 +11,8 @@
                     </div>
                 </div>
                 <p style="width: 100%; margin: 1px; margin-left: 10px">Location: {{location}}</P>
-                <acceptrejectcard v-for="booking in post[0].booking" :booking="booking"/>
+                <p style="width: 100%; margin: 1px; margin-left: 10px">Status: Confirmed</P>
+                <acceptrejectcard v-for="(booking, index) in post[0].booking" :key="index" :booking="booking"/>
             </vs-collapse-item>
 
             <vs-collapse-item v-for="(bookingParent,index) in bookingParents" :key="index" >
