@@ -1,8 +1,8 @@
 <template>
   <div style="width:90%; margin:auto; margin-bottom: 10px;">
     <el-carousel indicator-position="outside" height="230px" interval=5000>
-        <el-carousel-item v-for="item in items" :key="item" style="width:100%; height: 230px">
-          <img style="width:100%; height: 230px" :src="item">
+        <el-carousel-item v-for="item in items" :key="item" style="width:100%;">
+          <img style="width:100%;" :src="item">
         </el-carousel-item>
     </el-carousel>  
   </div>
