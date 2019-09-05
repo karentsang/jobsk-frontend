@@ -1,23 +1,25 @@
 <template>
   <div id='homepage'>
 
-    <div class="slogan" style="width:100%; height: 200px; background-color:#FAFAFA; font-size: 24px; text-align: center; padding: 51px;">
-        Find your local service, earn extra money with your experties, in JOBSK
+    <div class="slogan" style="width:100%; background-color:#FAFAFA; font-size: 24px; text-align: center;">
+        <img  style="width:100%;" src="https://res.cloudinary.com/suang/image/upload/v1567591072/JOBSK/Screen_Shot_2019-09-04_at_5.57.24_PM_ffw8hu.png"/>
     </div>
 
     <div class="button" style="width:90%; display: flex; place-content: space-evenly; margin:auto; margin-top:10px; margin-bottom:20px;">
-        <vs-button color="#07689F" type="border" style="width: 30%; font-size: 17px"><router-link style="color:#07689F" to="/list?type=Offering">Look for Job</router-link></vs-button>
-        <vs-button color="#ff7e67" type="border" style="width: 30%; font-size: 17px"><router-link style="color:#ff7e67;" to="/post">Post my JOBSK</router-link></vs-button>
-        <vs-button color="#07689F" type="border" style="width: 30%; font-size: 17px"><router-link style="color:#07689F;" to="/list?type=Providing">Look for service</router-link></vs-button>
+        <vs-button color="rgb(50,75,125)" type="border" style="width: 31%; font-size: 15px; font-weight: bold;"><router-link style="color:rgb(50,75,125)" to="/list?type=Offering"><font-awesome-icon icon="dollar-sign"/> Search Jobs</router-link></vs-button>
+        <vs-button color="rgb(50,75,125)" type="border" style="width: 31%; font-size: 15px; font-weight: bold;"><router-link style="color:rgb(50,75,125);" to="/list?type=Providing"><font-awesome-icon icon="magic"/> Search Services</router-link></vs-button>
+        <vs-button color="#ff7e67" type="border" style="width: 31%; font-size: 14px; font-weight: bold;"><router-link style="color:#ff7e67;" to="/post"><font-awesome-icon icon="bullhorn"/>  Post Jobs + Services</router-link></vs-button>
+        <!-- <vs-button color="#07689F" type="border" style="width: 31%; font-size: 17px"><router-link style="color:#07689F;" to="/list?type=Providing">Look for service</router-link></vs-button> -->
     </div>
 
-    <h3 style="width:90%; margin:auto; margin-bottom: 10px;">Popular services</h3>
+
+    <h3 style="width:90%; margin:auto; margin-bottom: 10px;">Popular Services</h3>
     
-    <slide :items="[1,2,3]"/>
+    <slide :items="item1"/>
 
-    <h3 style="width:90%; margin:auto; margin-bottom: 10px">Popular JOBSKer</h3>
+    <h3 style="width:90%; margin:auto; margin-bottom: 10px">JOBSK's team members</h3>
 
-    <slide :items="[1,2]"/>
+    <slide :items="item2"/>
 
 
     <h3 style="width:90%; margin:auto; margin-bottom: 10px; text-align: center;">Be part of JOBSK community</h3>
@@ -37,21 +39,37 @@ export default {
       slide,
       jobskheader,
       jobskfooter,
+  },
+  data(){
+    return {
+      item1:[
+          'https://res.cloudinary.com/suang/image/upload/v1567645187/JOBSK/Screen_Shot_2019-09-05_at_8.58.48_AM_idw6vn.png',
+          'https://res.cloudinary.com/suang/image/upload/v1567645187/JOBSK/Screen_Shot_2019-09-05_at_8.58.38_AM_ufwkf2.png',
+          'https://res.cloudinary.com/suang/image/upload/v1567645187/JOBSK/Screen_Shot_2019-09-05_at_8.59.27_AM_t63ted.png'
+        ],
+      item2:[
+        'https://res.cloudinary.com/suang/image/upload/v1567603879/JOBSK/Screen_Shot_2562-09-04_at_21.02.48_co2adv.png',
+        'https://res.cloudinary.com/suang/image/upload/v1567603879/JOBSK/Screen_Shot_2562-09-04_at_21.03.27_rp96vt.png',
+        'https://res.cloudinary.com/suang/image/upload/v1567603879/JOBSK/Screen_Shot_2562-09-04_at_21.03.52_npn253.png',
+        'https://res.cloudinary.com/suang/image/upload/v1567603878/JOBSK/Screen_Shot_2562-09-04_at_21.04.15_ajny92.png'
+      ],
+    }
   }
 }
 </script>
 
 <style>
 #homepage{
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Dosis', sans-serif;
   font-weight: 100;
 }
 h3{
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 100;
+  font-family: 'Dosis', sans-serif;
+  font-weight: 500;
+  color:black;
 }
-button{
-  font-family: 'Montserrat', sans-serif;
+vs-button{
+  font-family: 'Dosis', sans-serif;
   font-weight: 100;
 }
 </style>

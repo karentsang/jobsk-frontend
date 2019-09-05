@@ -1,9 +1,10 @@
 <template>
-    <div class="header" style="width: 100%; display: flex; margin: 15px 0px;">
+    <div class="header" style="width: 100%; display: flex; background-color: rgb(50,75,125); height: 83px">
 
-        <div ref="parentSidebar" id="parentx" style="width: 20%; display: flex; place-content: center;">
+        <div ref="parentSidebar" id="parentx" style="width: 20%; display: flex; place-content: center; ">
 
-            <vs-button @click="active=!active"  icon-no-border icon="account_circle" color="black" type="flat" style="align-self: center; padding:0px"></vs-button>
+            <vs-button v-show="isExistingUser" @click="active=!active"  icon-no-border icon="account_circle" color="black" type="flat" style="align-self: center; padding:0px; color: white;"></vs-button>
+            <div v-if="!isExistingUser" style="width: 20%;" ></div>
             <vs-sidebar default-index="1"  color="danger" class="sidebarx" spacer v-model="active">
 
                 <div class="header-sidebar" slot="header">
@@ -35,13 +36,13 @@
             </vs-sidebar>
         </div>
 
-        <div calss="logo" style="text-align: center; width: 100%;">
+        <div calss="logo" style="text-align: center; width: 100%; margin: auto;">
             <router-link to="/">
-                <img style="width: 200px" src="https://res.cloudinary.com/suang/image/upload/v1567153808/JOBSK/Screen_Shot_2019-08-30_at_4.28.56_PM_ienmcj.png"/>
+                <img style="width: 200px; align-self: center; margin: auto;" src="https://res.cloudinary.com/suang/image/upload/v1567573042/JOBSK/Screen_Shot_2019-09-04_at_12.56.46_PM_crpiuv.png"/>
             </router-link>
         </div>
         <div v-if="isExistingUser" style="width: 20%;" ></div>
-        <vs-button v-show="!isExistingUser" style="text-align: center; width: 20%; padding:0px" color="white" type="flat"><router-link style="color: #ff7e67;" to="/account/login">Join</router-link></vs-button>
+        <vs-button v-show="!isExistingUser" style="text-align: center; width: 20%; padding:0px" color="rgb(50,75,125)" type="filled"><router-link style="color: #ff7e67;" to="/account/login">Join</router-link></vs-button>
 
     </div>
 </template>
@@ -56,8 +57,8 @@ export default {
 
     data:()=>({
         active:false,
-        name:'Suang',
-        profileimg:"https://randomuser.me/api/portraits/men/85.jpg",
+        name:localStorage.getItem("user"),
+        profileimg:"https://res.cloudinary.com/suang/image/upload/v1567592655/JOBSK/Screen_Shot_2019-09-04_at_6.23.44_PM_rqfasd.png",
         isExistingUser: false
     }),
     mounted() {

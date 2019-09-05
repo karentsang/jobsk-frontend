@@ -31,7 +31,7 @@ export default {
 
 <style>
 #app{
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Dosis', sans-serif;
   font-weight: 100;
 }
 

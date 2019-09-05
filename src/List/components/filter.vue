@@ -6,15 +6,27 @@
         </h3>
 
 
-        <div class='filter_tab' style="display: flex; flex-wrap: wrap; margin-top: 15px; justify-content: space-evenly;">
-            <vs-button @click="getCat('A')" style="margin-bottom: 9px; margin-left: 10px; width:90px; justify-content: center;" color="primary" type="border">A</vs-button>
-            <vs-button @click="getCat('B')" style="margin-bottom: 9px; margin-left: 10px; width:90px; justify-content: center;" color="primary" type="border">B</vs-button>
-            <vs-button @click="getCat('C')" style="margin-bottom: 9px; margin-left: 10px; width:90px; justify-content: center;" color="primary" type="border">C</vs-button>
+        <div class='filter_tab' style="display: flex; flex-wrap: wrap; margin-top: 10px; justify-content: space-evenly;">
+            <vs-button @click="getCat('Photographers')" style="margin-bottom: 9px; margin-left: 10px; width:110px; font-size: 15px; justify-content: center;" color="rgb(50,75,125)" type="border"
+            ><font-awesome-icon icon="camera"/>
+            Photographers</vs-button>
+            <vs-button @click="getCat('Interior + Designers')" style="margin-bottom: 9px; margin-left: 10px; width:110px; font-size: 15px; justify-content: center;" color="rgb(50,75,125)" type="border"
+            ><font-awesome-icon icon="pencil-ruler"/>
+            Interior + Designers</vs-button>
+            <vs-button @click="getCat('Musicians')" style="margin-bottom: 9px; margin-left: 10px; width:110px; font-size: 15px; justify-content: center;" color="rgb(50,75,125)" type="border"
+            ><font-awesome-icon icon="music"/>
+            Musicians</vs-button>
         </div>
-        <div class='filter_tab' style="display: flex; flex-wrap: wrap; margin-top: 15px; justify-content: space-evenly;">
-            <vs-button @click="getCat('D')" style="margin-bottom: 9px; margin-left: 10px; width:90px; justify-content: center;" color="primary" type="border">D</vs-button>
-            <vs-button @click="getCat('E')" style="margin-bottom: 9px; margin-left: 10px; width:90px; justify-content: center;" color="primary" type="border">E</vs-button>
-            <vs-button @click="getCat('F')" style="margin-bottom: 9px; margin-left: 10px; width:90px; justify-content: center;" color="primary" type="border">F</vs-button>
+        <div class='filter_tab' style="display: flex; flex-wrap: wrap; margin-top: 10px; justify-content: space-evenly;  margin-bottom: 10px">
+            <vs-button @click="getCat('Painters')" style="margin-bottom: 9px; margin-left: 10px; width:110px; font-size: 15px; justify-content: center;" color="rgb(50,75,125)" type="border"
+            ><font-awesome-icon icon="palette"/>
+            Painters</vs-button>
+            <vs-button @click="getCat('Dancers')" style="margin-bottom: 9px; margin-left: 10px; width:110px; font-size: 15px; justify-content: center;" color="rgb(50,75,125)" type="border"
+            ><font-awesome-icon icon="child"/>
+            Dancers</vs-button>
+            <vs-button @click="getCat('Models')" style="margin-bottom: 9px; margin-left: 10px; width:110px; font-size: 15px; justify-content: center;" color="rgb(50,75,125)" type="border"
+            ><font-awesome-icon icon="gem"/>
+            Models</vs-button>
         </div>
 
     </div>
@@ -68,7 +80,9 @@ export default {
     left: 0px;
     background-color: #fafafa;
 }
-
+h3{
+    font-family: 'Dosis', sans-serif;
+}
 
 
 

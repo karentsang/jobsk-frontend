@@ -1,9 +1,9 @@
 <template>
-  <vs-row vs-justify="center">
+  <vs-row vs-justify="center" style="margin-bottom: 25px; margin-top: 25px">
     <vs-col type="flex" vs-justify="center" vs-align="center" vs-w="10">
       <vs-card class="cardx" style="padding: 10px; margin: 20px 0px;">
         <div slot="header">
-          <h3 style="font-family: Arial;">
+          <h3 style="font-family: 'Dosis', sans-serif;">
             Log In to continue
             <!-- <vs-alert active="true">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
@@ -12,13 +12,10 @@
         </div>
         <div class="cardBorder">
           <div slot="extra-content" class="googleCard">
-            <vs-button 
-            color="#939393" 
-            type="border" 
-            class="googleLogin">
-                <GoogleLogin :params="params" :onSuccess="onSuccess" :onFailure="onFailure" style="border:none">Log In with Google</GoogleLogin>
-            </vs-button>
+
+                <GoogleLogin :params="params":renderParams="renderParams" :onSuccess="onSuccess" :onFailure="onFailure" ></GoogleLogin>
             
+            <br>
           </div>
           <div
             class="centerx labelx"
@@ -41,8 +38,7 @@
             />
             <vs-button
               @click="put"
-              :color="colorx"
-              :gradient-color-secondary="colorx2"
+              color="danger"
               type="gradient"
               class="button"
             >Log In</vs-button>
@@ -188,6 +184,7 @@ vs-input {
   display: flex;
   justify-content: center;
   margin-bottom: 30px;
+  padding:20px;
 }
 .googleCard:hover {
   cursor: pointer;

@@ -3,7 +3,12 @@
     <inputP :inputForm.sync="inputForm"/>
     <googlemapP :inputForm.sync="inputForm"/>
       <div class='postbutton' style="width:83%; margin: auto; margin-top: 10px; text-align: center;">
-        <vs-button @click="openPostCompleted()" color="danger" type="border" style="width: 80%; height:40px; margin-bottom: 15px; justify-content: center;">Post it</vs-button>
+        <vs-button 
+            @click="openPostCompleted()" 
+            color="danger"
+            type="gradient"
+            style="width: 80%; height:40px; margin-bottom: 15px; justify-content: center;"
+        >Post it</vs-button>
     </div>
     <!-- <postbutton/> -->
   </div>

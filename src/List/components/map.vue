@@ -21,13 +21,13 @@
             v-for="(m, index) in markers"
             :position="m"
             :clickable="true"
-            :draggable="true"
+            :draggable="false"
             :icon="selected == index ? 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' : ''"
             @click="toggleInfoWindow(m,index)"
             
         />
 
-        <gmap-info-window
+        <!-- <gmap-info-window
             :options="infoOptions"
             :position="infoWindowPos"
             :opened="infoWinOpen"
@@ -35,22 +35,19 @@
         >
             <div v-html="infoContent"></div>
             
-        </gmap-info-window>
+        </gmap-info-window> -->
         
     </GmapMap>
 
         <!-- swiper -->
         <swiper :options="swiperOption" @slideChange="handleSlideChange" ref="mySwiper">
           <swiper-slide v-for="(marker, index) in markers" v-bind:key="index">
-            <div class="card" style="display: flex; flex-direction: row;">
-              <div class="card-image" style="float: left;">
-                <figure class="image is-4by3" style="display: flex; flex-direction: row; margin: 0 0 0rem;">
-                  <img :src="marker.image" class="marker-img" alt="Placeholder image">
-                  <div class="card-content" style="display: flex; flex-direction: column; margin:auto; margin-right:5px; margin-left:5px; color:black">
-                    <div class="media">
-                      <div class="model-content">
-                        <p class="title is-4">Type: {{marker.type}}</p>
-                      </div>
+            <vs-card class="swipercard" style="display: flex; flex-direction: row; width:80%; border-right-style: ridge; color: black;">
+                <figure class="image is-4by3" style="display: flex; flex-direction: row;">
+                  <img :src="marker.image" class="marker-img" alt="Placeholder image" style="width:120px; height:100px; border-radius: 5px;">
+                  <div class="card-content">
+                    <div class="type-content">
+                      <p class="title is-4">Type: {{marker.type}}</p>
                     </div>
                     <div class="price-content">
                       Price: {{marker.price}} /hr
@@ -58,11 +55,10 @@
                     <div class="status-content">
                       Category: {{marker.category}}
                     </div>
-                    <button class="el-button el-button--default" style="color:#42b983; background-color:#080024;" @click="goToPage(marker.id, marker.type)">Book it!</button>
+                    <vs-button color="danger" style="margin-top: 6px;"  type="gradient" @click="goToPage(marker.id, marker.type)">Book the date!</vs-button>
                   </div>
                 </figure>
-              </div>
-            </div>
+            </vs-card>
           </swiper-slide>
           <div class="swiper-scrollbar" slot="scrollbar"></div>
         </swiper>
@@ -70,14 +66,14 @@
       <!-- <vs-button @click="popupActive=true" color="danger" type="border">booking</vs-button> -->
       <vs-popup fullscreen title="fullscreen" :active.sync="popupActive">
         <vs-card>
-        <datetime v-model="startdatetime" type="datetime" :auto='true' placeholder="select a starting time"></datetime>
+          <datetime v-model="startdatetime" type="datetime" :auto='true' placeholder="select a starting time"></datetime>
         </vs-card>
         <vs-card>
-        <datetime v-model="enddatetime" type="datetime" :auto='true' placeholder="select a ending time"></datetime>
-      </vs-card>
+          <datetime v-model="enddatetime" type="datetime" :auto='true' placeholder="select a ending time"></datetime>
+        </vs-card>
         
           <div class="ConfirmButtton" style="text-align: center;">
-          <vs-button type="filled" color="primary" @click="createBooking">Confirm</vs-button>
+            <vs-button type="filled" color="primary" @click="createBooking">Confirm</vs-button>
           </div>
       </vs-popup>
   </div>
@@ -120,7 +116,7 @@ export default {
           },
           swiperOption: {
             slidesPerView: 1,
-            spaceBetween: -30,
+            spaceBetween: -70,
             pagination: {
               el: '.swiper-pagination',
               clickable: true
@@ -228,5 +224,13 @@ export default {
 }
 .swiper-slide {
     width: 250px;
+  }
+  .card-content{
+    margin-left: 36px;
+    align-self: center;
+  }
+
+  .vs-card--content {
+   margin-bottom: 0 !important;
   }
 </style>
