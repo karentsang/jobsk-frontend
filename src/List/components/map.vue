@@ -21,13 +21,12 @@
             v-for="(m, index) in markers"
             :position="m"
             :clickable="true"
-            :draggable="true"
+            :draggable="false"
             :icon="selected == index ? 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png' : ''"
-            @click="toggleInfoWindow(m,index)"
             
         />
 
-        <gmap-info-window
+        <!-- <gmap-info-window
             :options="infoOptions"
             :position="infoWindowPos"
             :opened="infoWinOpen"
@@ -35,7 +34,7 @@
         >
             <div v-html="infoContent"></div>
             
-        </gmap-info-window>
+        </gmap-info-window> -->
         
     </GmapMap>
 
@@ -196,47 +195,6 @@ export default {
             }
           });
         },
-        toggleInfoWindow: function (marker, idx) {
-
-        //   console.log(marker)
-        this.infoWindowPos = { lat: marker.lat, lng: marker.lng };
-        // this.infoContent = this.getInfoWindowContent(marker);
-        
-
-        //check if its the same marker that was selected if yes toggle
-        if (this.currentMidx == idx) {
-          this.infoWinOpen = !this.infoWinOpen;
-        }
-        //if different marker set infowindow to open and reset current marker index
-        else {
-          this.infoWinOpen = true;
-          this.currentMidx = idx;
-        }
-      },
-
-        // getInfoWindowContent: function (marker) {
-        //   return `<div class="card" style="display: flex; flex-direction: row;">
-        //             <div class="card-image" style="float: left;">
-        //               <figure class="image is-4by3" style="display: flex; flex-direction: row; margin: 0 0 0rem;">
-        //                 <img src="${marker.image}" class="marker-img" %alt="Placeholder image">
-        //                 <div class="card-content" style="display: flex; flex-direction: column; margin:auto; margin-right:5px; margin-left:5px; color:black">
-        //                   <div class="media">
-        //                     <div class="model-content">
-        //                       <p class="title is-4">Type: ${marker.type}</p>
-        //                     </div>
-        //                   </div>
-        //                   <div class="price-content">
-        //                     Price: ${marker.price} /hr
-        //                   </div>
-        //                   <div class="status-content">
-        //                     Category: ${marker.category}
-        //                   </div>
-        //                   <a href="/booking"><button class="el-button el-button--default" style="color:#42b983; background-color:#080024;">Book it!</button></a>
-        //                 </div>
-        //               </figure>
-        //             </div>
-        //           </div>`
-        //         },
     }
 }
 
