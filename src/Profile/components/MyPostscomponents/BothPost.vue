@@ -24,7 +24,8 @@
                     </div>
                 </div>
                 <p style="width: 100%; margin: 1px; margin-left: 10px">Status: {{bookingParent.booking.status}}</P>
-                <p style="width: 100%; margin: 1px; margin-left: 10px">Start date: {{bookingParent.booking.start_date}}</P>
+                <p style="width: 100%; margin: 1px; margin-left: 10px">Start at: {{bookingParent.booking.start_date| date('DD MMMM HH:MM')}}</P>
+                <p style="width: 100%; margin: 1px; margin-left: 10px">End at: {{bookingParent.booking.end_date| date('DD MMMM HH:MM')}}</P>
             </vs-collapse-item>
 
     </div>
@@ -32,10 +33,14 @@
 
 <script>
 import acceptrejectcard from '@/Profile/components/MyPostscomponents/AcceptRejectCard.vue'
-import { format, compareAsc } from 'date-fns'
+import { dateFilter } from "vue-date-fns"
 const axios = require("axios");
 
 export default {
+
+    filters: {
+        date: dateFilter
+    },
     name:'bothpost',
     components:{
         acceptrejectcard,
@@ -56,7 +61,7 @@ export default {
     },
     methods: {
         postByUser() {
-            return axios.get(`http://127.0.0.1:3333/user/3/post`)
+            return axios.get(`http://127.0.0.1:3333/user/${this.userId}/post`)
         },
 
         postChild(pid) {
