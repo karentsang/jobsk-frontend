@@ -10,9 +10,9 @@
             <div style="width: 50%;">
                 <p style="font-size: x-small;padding: 16px; text-align: center;" >About us. WhiteBoard Academy</p>
                 <div style="display: flex; align-self: center; place-content: space-evenly;">
-                    <img style="width: 42px; height: 42px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1200px-Octicons-mark-github.svg.png"/>
-                    <img style="width: 42px; height: 42px;" src="https://cdn0.iconfinder.com/data/icons/social-media-circle-6/1024/instagram-512.png"/>
-                    <img style="width: 42px; height: 42px;" src="https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/facebook_circle-512.png"/>
+                    <a href="http://whiteboard.academy"><img style="width: 42px; height: 42px;" src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Octicons-mark-github.svg/1200px-Octicons-mark-github.svg.png"/></a>
+                    <a href="https://www.instagram.com/whiteboard_academy/"><img style="width: 42px; height: 42px;" src="https://cdn0.iconfinder.com/data/icons/social-media-circle-6/1024/instagram-512.png"/></a>
+                    <a href="https://www.facebook.com/Whiteboard-Academy-1248793981957119/"><img style="width: 42px; height: 42px;" src="https://cdn4.iconfinder.com/data/icons/social-media-icons-the-circle-set/48/facebook_circle-512.png"/></a>
                 </div>  
             </div>
         </footer>
