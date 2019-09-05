@@ -15,7 +15,7 @@
 
     <h3 style="width:90%; margin:auto; margin-bottom: 10px;">Popular Services</h3>
     
-    <slide :items="item1"/>
+    <router-link to="/list?type=Providing"><slide @click="listpage" :items="item1"/></router-link>
 
     <h3 style="width:90%; margin:auto; margin-bottom: 10px">JOBSK's team members</h3>
 
@@ -53,6 +53,11 @@ export default {
         'https://res.cloudinary.com/suang/image/upload/v1567603879/JOBSK/Screen_Shot_2562-09-04_at_21.03.52_npn253.png',
         'https://res.cloudinary.com/suang/image/upload/v1567603878/JOBSK/Screen_Shot_2562-09-04_at_21.04.15_ajny92.png'
       ],
+    }
+  },
+  methods:{
+    listpage(){
+      document.location.href="/list?type=Providing"
     }
   }
 }

@@ -72,7 +72,10 @@ export default {
 </script> 
 
 <style>
-.datetime {font-size: 15px}
+.datetime {
+  font-size: 15px;
+  border: none;
+  }
 
 .vs-button {
   background-color: blue; 

@@ -22,14 +22,14 @@
                     </router-link>
                 </vs-sidebar-item>
 
-                <vs-sidebar-item  color="#07689F" index="2" icon="question_answer">
+                <vs-sidebar-item @click="gopost"  color="#07689F" index="2" icon="question_answer">
                     <router-link to="/profile/mypost">
                         Your Job Post
                     </router-link>
                 </vs-sidebar-item>
 
                 <div class="footer-sidebar" slot="footer">
-                    <vs-button @click="out" icon="reply" color="danger" type="flat"><router-link to="/">log out</router-link></vs-button>
+                    <vs-button @click="out" icon="reply" color="danger" type="flat"><router-link to="/">Log out</router-link></vs-button>
                     <!-- <vs-button icon="settings" color="#07689F" type="flat"></vs-button> -->
                 </div>
 
@@ -80,6 +80,9 @@ export default {
             // this.$router.reload({name:"homepage"})
             // this.active = false
             document.location.href="/"
+        },
+        gopost(){
+            document.location.href="/profile/mypost"
         }
     },
 }    

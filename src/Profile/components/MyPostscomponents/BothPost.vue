@@ -12,7 +12,7 @@
                     </div>
                 </div>
                 <p style="width: 100%; margin: 1px; margin-left: 10px">Location: {{location}}</P>
-                <acceptrejectcard v-on:isconfirmed="confirmation(index, subIndex)" v-for="(booking, subIndex) in post[0].booking" :key="'sub_' +index" :booking="booking" :user_id="booking.user_id"/>
+                <acceptrejectcard v-on:isconfirmed="confirmation(index, subIndex)" v-for="(booking, index) in post[0].booking" :key="index" :booking="booking" :user_id="booking.user_id"/>
             </vs-collapse-item>
 
             <vs-collapse-item v-for="(bookingParent,index) in bookingParents" :key="index" >
@@ -90,10 +90,10 @@ console.log(this.posts[index][0].booking)
             let post = response.data
             for (let i = 0; i < post.length; i++) {
                 let pid = post[i].id
-                let childResponse = await this.postChild(1)
+                let childResponse = await this.postChild(pid)
                 let child = childResponse.data
                 post[i]['booking'] = child
-                console.log(post[i])
+                // console.log(post[i])
                 this.posts.push(post)
             }
 
