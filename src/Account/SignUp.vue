@@ -125,15 +125,11 @@ export default {
         localStorage.setItem("token", this.token);
         localStorage.setItem("user", this.email);
         localStorage.setItem("userId", this.userId);
+
+        this.test()
         
       } catch(err) {
-        this.$vs.notify(
-          {
-            title:'Signup failed',
-            text:'Wrong username/password',
-            color:'danger',
-            position: 'top-right'
-          })
+        
       }
     },
 
