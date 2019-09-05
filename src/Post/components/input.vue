@@ -117,7 +117,7 @@ export default {
                 {text:'Interior + Designers',value: 'Interior + Designers'},
                 {text:'Musicians',value: 'Musicians'},
                 {text:'Painters',value: 'Painters'},
-                {text:'Dnacers',value: 'Dnacers'},
+                {text:'Dancers',value: 'Dancers'},
                 {text:'Models',value: 'Models'},
             ],
             price:'',

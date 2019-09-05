@@ -64,7 +64,7 @@ export default {
         })
     },
     acceptAlert(){
-      this.$router.push({name:"homepage"});
+      this.$router.push({name:"mypost"});
     },
   },
   mounted() {
