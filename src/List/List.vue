@@ -2,28 +2,7 @@
   <div>
     <jobfilter @changeFilter="handleData"/>
     <googlemap :markers="markers"/>
-<<<<<<< HEAD
- 
-    <!-- <pending  v-if="bookingConfirmed" :bookingInfo="bookingInfo"/> -->
-    <!-- <pending  v-if="bookingConfirmed" :bookingInfo="bookingInfo"/>
-    <h3><router-link to="/profile/mycalendar">book now</router-link></h3>
-     <div class="centerx">
-    <vs-button color="danger" type="border">booking</vs-button>
-    <vs-popup>
-      <vs-card>
-      <datetime v-model="startdatetime" type="datetime" :auto='true' placeholder="select a starting time"></datetime>
-      </vs-card>
-      <vs-card>
-      <datetime v-model="enddatetime" type="datetime" :auto='true' placeholder="select a ending time"></datetime>
-     </vs-card>
-      
-  
-    </vs-popup> -->
-=======
->>>>>>> dac4eb9f2591cc6b6eb4e171a8e1c796d6d6cf51
     </div>
-
-  </div>
 </template>
 
 <script>
@@ -118,8 +97,4 @@ export default {
   display:inline-flex;
   font-size: 18px;
 }
-<<<<<<< HEAD
-
-=======
->>>>>>> dac4eb9f2591cc6b6eb4e171a8e1c796d6d6cf51
 </style>
