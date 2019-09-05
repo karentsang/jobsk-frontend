@@ -22,7 +22,7 @@
                     </router-link>
                 </vs-sidebar-item>
 
-                <vs-sidebar-item  color="#07689F" index="2" icon="question_answer">
+                <vs-sidebar-item @click="gopost"  color="#07689F" index="2" icon="question_answer">
                     <router-link :to="{ name: 'mypost'}">
                         Your Job Post
                     </router-link>
@@ -82,7 +82,7 @@ export default {
             document.location.href="/"
         },
         gopost(){
-            this.$route
+            this.$router.push({name: 'mypost' })
         }
     },
 }    
