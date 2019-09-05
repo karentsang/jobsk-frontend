@@ -39,7 +39,7 @@
         <div slot="footer">
           <vs-row vs-justify="flex-end">
               <vs-button @click="put" color="danger" type="gradient" class="button"
-            ><router-link style="color: white" to="/profile/mypost">More Posts</router-link></vs-button>
+            ><router-link style="color: white" :to="{name: 'mypost'}">More Posts</router-link></vs-button>
 
           </vs-row>
         </div>

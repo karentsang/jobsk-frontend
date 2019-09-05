@@ -49,7 +49,7 @@
           <vs-row vs-justify="center">
             <div style="font-family: Arial;">
               Don't have an account?
-              <router-link to="/account/login/signup">Sign Up!</router-link>
+              <router-link :to="{ name: 'signup' }">Sign Up!</router-link>
             </div>
           </vs-row>
         </div>

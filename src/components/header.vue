@@ -23,7 +23,7 @@
                 </vs-sidebar-item>
 
                 <vs-sidebar-item @click="gopost"  color="#07689F" index="2" icon="question_answer">
-                    <router-link to="/profile/mypost">
+                    <router-link :to="{ name: 'mypost'}">
                         Your Job Post
                     </router-link>
                 </vs-sidebar-item>
