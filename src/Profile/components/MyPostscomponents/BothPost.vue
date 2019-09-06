@@ -19,7 +19,7 @@
                 <div slot="header" style="border-bottom: inset; display: flex; background-color: rgba(7,104,159,0.75); border-radius: 9px ">
                     <img style="width: 30%; height:30%; display: flex; padding: 9px;" :src="bookingParent.post_img"/>
                     <div style="width: 70%; display: flex; padding: 9px; flex-wrap: wrap; font-family: 'Pavanam', sans-serif;">
-                        <p style="width: 100%; margin: 1px">Name: {{bookingParent.type}}</P>
+                        <p style="width: 100%; margin: 1px">Type: {{bookingParent.type}}</P>
                         <p style="width: 100%; margin: 1px">Speciality: {{bookingParent.category}}</P>
                         <p style="width: 100%; margin: 1px">Price: {{bookingParent.price}}</P>
                     </div>
