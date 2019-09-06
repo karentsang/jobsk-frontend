@@ -62,6 +62,7 @@ export default {
             close: this.acceptAlert,
             accept: this.acceptAlert,
         })
+      // return result
     },
     acceptAlert(){
       this.$router.push({name:"mypost"});
