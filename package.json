@@ -24,7 +24,7 @@
     "filepond": "^4.6.0",
     "filepond-plugin-file-validate-type": "^1.2.4",
     "filepond-plugin-image-preview": "^4.4.0",
-    "luxon": "^1.17.2",
+    "luxon": "^2.5.2",
     "material-design-icons": "^3.0.1",
     "material-icons": "^0.3.1",
     "serve-static": "^1.14.1",
